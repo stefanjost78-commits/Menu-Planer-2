@@ -82,7 +82,7 @@
 </head>
 <body>
 <header>
-  <h1>🍽️ Menü Planer <span class="version" id="ver">v1.7.0</span></h1>
+  <h1>🍽️ Menü Planer <span class="version" id="ver">v1.7.1</span></h1>
   <button class="menubtn" id="menubtn" onclick="toggleMenu()" aria-expanded="false">☰ Menü <span class="arr" id="menuarr">▾</span></button>
   <nav id="mainnav">
     <div class="navgroup">Gerichte</div>
@@ -102,7 +102,7 @@
 <main id="app"></main>
 
 <script>
-const VERSION = '1.7.0';
+const VERSION = '1.7.1';
 const COURSES = { suppe:'Suppe', vorspeise:'Vorspeise', haupt:'Hauptgericht' };
 const COURSES_LB = { suppe:'Zopp', vorspeise:'Entrée', haupt:'Haaptplat' };
 const DAYNAMES = ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'];
@@ -721,7 +721,10 @@ function syncName(){ const el = document.getElementById('dishName'); if(el) form
 function setFlag(key){ syncName(); form[key] = !form[key]; renderDishes(currentDishCourse()); }
 function setEffort(e){ syncName(); form.effort = e; renderDishes(currentDishCourse()); }
 function renderDishes(course){
-  const list = dishes.filter(d=>d.course===course && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));
+  let list = dishes.filter(d=>d.course===course && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));
+  const allHaupt = list;
+  const usedCats = course==='haupt' ? cats.filter(c=>list.some(d=>d.cats.includes(c.id))) : [];
+  if(course==='haupt' && hauptFilter) list = list.filter(d=>d.cats.includes(hauptFilter));
   const isEdit = editId!==null;
   app.innerHTML = `
   <div class="card">
@@ -754,8 +757,9 @@ function renderDishes(course){
     <div class="actions"><button class="btn secondary" onclick="addCat()">＋ Kategorie hinzufügen</button></div>
   </div>
   <div class="card">
+    ${course==='haupt' && usedCats.length ? `<div class="chiprow" style="margin:0 0 10px"><span class="chip ${hauptFilter===null?'on':''}" onclick="setHauptFilter(null)">📋 Alle (${allHaupt.length})</span>` + usedCats.map(c=>`<span class="chip ${hauptFilter===c.id?'on':''}" style="${hauptFilter===c.id?'background:'+c.color+';border-color:'+c.color:''}" onclick="setHauptFilter('${c.id}')">${c.icon} ${esc(c.label)} (${allHaupt.filter(d=>d.cats.includes(c.id)).length})</span>`).join('') + '</div>' : ''}
     <h2>📋 ${COURSES[course]}e (${list.length})</h2>
-    ${list.length===0?'<div class="empty">Noch keine '+COURSES[course]+'e.</div>':list.map(d=>`
+    ${list.length===0?(course==='haupt'&&hauptFilter?'<div class="empty">Keine Hauptgerichte in dieser Kategorie.</div>':'<div class="empty">Noch keine '+COURSES[course]+'e.</div>'):list.map(d=>`
       <div class="dish">
         <div style="flex:1">
           <div class="name">${esc(d.name)}</div>
@@ -774,6 +778,8 @@ function renderDishes(course){
 }
 function toggleCat(id){ syncName(); const i=form.cats.indexOf(id); if(i>=0) form.cats.splice(i,1); else form.cats.push(id); renderDishes(currentDishCourse()); }
 function currentDishCourse(){ return ['suppe','vorspeise','haupt'].includes(tab)?tab:'haupt'; }
+let hauptFilter = null;
+function setHauptFilter(id){ hauptFilter = id; renderDishes('haupt'); }
 function saveDish(course){
   form.name = document.getElementById('dishName').value.trim();
   if(!form.name){ alert('Bitte einen Namen eingeben oder ansagen.'); return; }
