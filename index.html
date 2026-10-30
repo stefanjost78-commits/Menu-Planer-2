@@ -1,1 +1,1049 @@
-[{"type":"text","text":"successfully downloaded text file (SHA: 3e528e05487bd70a151bb8b4d1754464c85992be)"},{"type":"resource","resource":{"uri":"repo://stefanjost78-commits/Menue-Planer/sha/f1ba6b0e9751822f5aea2895924d2d7547831f13/contents/index.html","mimeType":"text/html; charset=utf-8","text":"\n<!doctype html>\n<html lang=\"de\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>Menü Planer</title>\n<meta name=\"theme-color\" content=\"#2e7d32\" />\n<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\" />\n<meta name=\"apple-mobile-web-app-title\" content=\"Menü Planer\" />\n<link rel=\"manifest\" href=\"manifest.json\" />\n<link rel=\"icon\" href=\"icon.svg\" type=\"image/svg+xml\" />\n<style>\n  :root { font-family: system-ui, sans-serif; background:#f4f6f8; color:#1b2733; margin:0; }\n  * { box-sizing:border-box; }\n  body { margin:0; padding-bottom:100px; }\n  header { background:#2e7d32; color:#fff; padding:12px 14px; position:sticky; top:0; z-index:9; }\n  header h1 { margin:0; font-size:1.15rem; display:flex; justify-content:space-between; align-items:center; }\n  .version { font-size:.75rem; background:rgba(255,255,255,.25); padding:3px 10px; border-radius:999px; }\n  nav { display:flex; gap:5px; margin-top:9px; overflow-x:auto; }\n  nav button { flex:1; padding:8px 6px; border:none; border-radius:8px; background:rgba(255,255,255,.18); color:#fff; font-weight:600; cursor:pointer; white-space:nowrap; font-size:.9rem; }\n  nav button.active { background:#fff; color:#2e7d32; }\n  main { padding:14px; max-width:760px; margin:0 auto; }\n  .card { background:#fff; border-radius:12px; padding:14px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }\n  h2 { margin:4px 0 10px; font-size:1.05rem; }\n  h3 { margin:14px 0 6px; font-size:.95rem; color:#455a64; }\n  input[type=text], select { width:100%; padding:9px; border:1.5px solid #cfd8dc; border-radius:8px; font-size:1rem; margin-bottom:8px; }\n  input[type=number] { width:4.2em; padding:6px; border:1.5px solid #cfd8dc; border-radius:6px; font-size:.9rem; }\n  .chiprow { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px; }\n  .chip { padding:6px 12px; border-radius:999px; border:1.5px solid #cfd8dc; background:#fff; font-size:.85rem; cursor:pointer; user-select:none; }\n  .chip.on { background:#2e7d32; border-color:#2e7d32; color:#fff; }\n  .btn { background:#2e7d32; color:#fff; border:none; border-radius:8px; padding:11px 16px; font-size:1rem; font-weight:600; cursor:pointer; width:100%; }\n  .btn.secondary { background:#e8f0e9; color:#2e7d32; }\n  .btn.rec { background:#c62828; }\n  .btn.small { width:auto; padding:6px 10px; font-size:.85rem; }\n  .dish { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 6px; border-bottom:1px solid #eceff1; }\n  .dish:last-child { border-bottom:none; }\n  .dish .name { font-weight:600; font-size:.95rem; }\n  .tags { font-size:.72rem; margin-top:3px; display:flex; flex-wrap:wrap; gap:4px; }\n  .tag { padding:2px 8px; border-radius:999px; }\n  .iconbtn { border:none; background:none; font-size:1.05rem; cursor:pointer; padding:2px 4px; }\n  .day { display:flex; gap:10px; padding:8px 10px; border-radius:8px; background:#fff; margin-bottom:5px; box-shadow:0 1px 2px rgba(0,0,0,.06); }\n  .day .dname { width:3.4em; font-weight:700; color:#2e7d32; flex:none; font-size:.85rem; }\n  .day .ddish { flex:1; font-size:.92rem; }\n  .day .dsub { font-size:.72rem; color:#78909c; }\n  .daycard { display:flex; gap:8px; padding:8px 10px; border-radius:8px; background:#fff; margin-bottom:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); page-break-inside:avoid; }\n  .daycard .dname { width:4.6em; flex:none; font-weight:700; color:#2e7d32; font-size:.85rem; padding-top:1px; }\n  .dline { font-size:.9rem; padding:1px 0; display:flex; gap:6px; }\n  .dline .dic { flex:none; width:1.3em; text-align:center; }\n  .hint { font-size:.8rem; color:#78909c; margin:4px 0 10px; }\n  .empty { text-align:center; color:#90a4ae; padding:20px 8px; font-size:.95rem; }\n  .legend { font-size:.78rem; color:#546e7a; margin-top:8px; }\n  .actions { display:flex; gap:8px; margin-top:8px; }\n  .actions .btn { flex:1; }\n  .catrow { display:flex; align-items:center; gap:8px; padding:7px 4px; border-bottom:1px solid #eceff1; }\n  .catrow:last-child { border-bottom:none; }\n  .catdot { width:14px; height:14px; border-radius:50%; flex:none; }\n  .rule { background:#fafbfc; border:1px solid #eceff1; border-radius:8px; padding:9px 10px; margin-bottom:7px; font-size:.88rem; }\n  #warnbox { position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50; padding:16px; }\n  #warnbox .card { max-width:500px; width:100%; max-height:80vh; overflow:auto; margin:0; }\n  #warnbox .witem { text-align:left; font-size:.9rem; padding:7px 0; border-bottom:1px solid #eceff1; }\n  .rule .rtop { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:5px; }\n  .rule .rlabel { font-weight:600; }\n  .rule .params { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }\n  .weekday { display:inline-flex; gap:4px; }\n  .weekday .chip { padding:3px 8px; font-size:.75rem; }\n  .collapsible summary { cursor:pointer; font-weight:600; color:#2e7d32; padding:4px 0; }\n  @media print {\n    header, nav, .noprint, .btn, .hint, .legend { display:none !important; }\n    body { padding:0; background:#fff; }\n    .card { box-shadow:none; border:none; padding:0; margin-bottom:6px; page-break-inside:avoid; }\n    .day { box-shadow:none; border-bottom:1px solid #ddd; border-radius:0; }\n    main { padding:0; max-width:none; }\n    body.rtl div[lang=lb] { display:block; }\n  }\n</style>\n</head>\n<body>\n<header>\n  <h1>🍽️ Menü Planer <span class=\"version\" id=\"ver\">v1.6.2</span></h1>\n  <nav>\n    <button id=\"tab-suppe\">Suppe</button>\n    <button id=\"tab-vorspeise\">Vorspeise</button>\n    <button id=\"tab-haupt\" class=\"active\">Hauptgericht</button>\n    <button id=\"tab-kombis\">🧩 Kombis</button>\n    <button id=\"tab-monatlich\">⭐ Monatlich</button>\n    <button id=\"tab-archiv\">Nicht mehr</button>\n    <button id=\"tab-plan\">Plan</button>\n    <button id=\"tab-regeln\">Regeln</button>\n    <button id=\"tab-sicherung\">Sicherung</button>\n  </nav>\n</header>\n<main id=\"app\"></main>\n\n<script>\nconst VERSION = '1.6.2';\nconst COURSES = { suppe:'Suppe', vorspeise:'Vorspeise', haupt:'Hauptgericht' };\nconst COURSES_LB = { suppe:'Zopp', vorspeise:'Entrée', haupt:'Haaptplat' };\nconst DAYNAMES = ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'];\nconst DAYNAMES_LB = ['Méindeg','Dënschdeg','Mëttwoch','Donneschdeg','Freideg'];\nconst PALETTE = ['#2e7d32','#1565c0','#e65100','#6a1b9a','#c62828','#00838f','#b71c1c','#5d4037','#455a64','#ad1457','#283593','#558b2f'];\n\n// ---------- Standard-Daten ----------\nconst DEFAULT_CATS = [\n  { id:'nudeln', label:'Nudeln', icon:'🍝', color:'#ad1457' },\n  { id:'rind',   label:'Rind',   icon:'🐄', color:'#c62828' },\n  { id:'huhn',   label:'Huhn',   icon:'🐔', color:'#e65100' },\n  { id:'fisch',  label:'Fisch',  icon:'🐟', color:'#1565c0' },\n  { id:'veg',    label:'Vegetarisch', icon:'🥕', color:'#558b2f' },\n  { id:'kartoffeln', label:'Kartoffeln', icon:'🥔', color:'#b71c1c' },\n  { id:'wurst',  label:'Wurst & Fleischwaren', icon:'🥓', color:'#5d4037' },\n];\n// Vorbefüllt aus Stefans Word-Menüplänen (Aug 2025 – Jan 2026, 21 Wochen)\nconst S = (name,extra)=>({ course:'suppe', name, cats:['veg'], monthly:false, fresh:false, effort:1, ...extra });\nconst H = (name,cats,extra)=>({ course:'haupt', name, cats, monthly:false, fresh:false, effort:2, ...extra });\nconst V = (name,extra)=>({ course:'vorspeise', name, cats:['veg'], monthly:false, fresh:false, effort:1, ...extra });\nconst STARTER_DISHES = [\n  // ---- Suppen ----\n  S('Gemüsesuppe'), S('Tomatensuppe'), S('Kürbissuppe'), S('Lauchsuppe'),\n  S('Blumenkohlsuppe'), S('Brokkolisuppe'), S('Selleriesuppe'), S('Kohlrabisuppe'),\n  S('Karottensuppe'), S('Topinambursuppe'), S('Kartoffelsuppe'),\n  S('Paprika-Karotten-Suppe'), S('Erbsensuppe'), S('Süßkartoffel-Karotten-Suppe'),\n  S('Kürbis-Süßkartoffel-Suppe'), S('Pastinakensuppe'), S('Spinatsuppe'),\n  S('Bohnensuppe mit Kartoffeln'), S('Fenchelsuppe'), S('Erbsen-Kartoffel-Suppe'),\n  S('Kürbis-Lauch-Suppe'), S('Karotten-Sellerie-Suppe'),\n  S('Kartoffel-Kohlrabi-Suppe'), S('Butternut-Kürbissuppe'), S('Romanescosuppe'),\n  S('Sellerie-Schwarzwurzel-Suppe'), S('Paprika-Tomaten-Suppe mit Frischkäse'),\n  S('Lauch-Kartoffel-Suppe'), S('Zucchinisuppe'), S('Zucchini-Sellerie-Suppe'),\n  S('Zucchini-Karotten-Suppe'),\n  // ---- Vorspeisen / Salate ----\n  V('Rohkostteller'), V('Rote-Bete-Salat'), V('Gefüllte Gurken'),\n  V('Mexikanischer Salat'), V('Tomate-Mozzarella'), V('Bohnensalat (Feierstengszalot)'),\n  V('Gemüsesticks mit Dip'), V('Gefüllte Eier'), V('Tomatensalat'),\n  V('Griechischer Salat'), V('Pizza-Schnecken'), V('Maiskörnersalat mit Ei'),\n  V('Karotten-Sellerie-Salat mit Apfel'), V('Linsensalat'),\n  V('Thunfisch-Reis-Salat',{cats:['fisch'],fresh:true}),\n  V('Rote-Linsen-Salat'), V('Salade Niçoise',{cats:['fisch'],fresh:true}),\n  V('Cracker mit Hummus'), V('Avocado-Joghurt-Dip mit Gemüse'),\n  V('Rote-Bete-Salat mit Feta & Kürbiskernen'), V('Bruschetta Italiana'),\n  V('Gemischter Salat'), V('Frühlingsrollen'),\n  V('Toast mit Ziegenkäse & Honig'),\n  V('Cracotte mit Thunfisch',{cats:['fisch'],fresh:true}),\n  V('Vitello Tonnato',{cats:['rind'],fresh:true}),\n  // ---- Hauptgerichte ----\n  H('Spaghetti Bolognese',['nudeln','rind'],{monthly:true,fresh:true}),\n  H('Lasagne Bolognese',['nudeln','rind'],{monthly:true,fresh:true,effort:3}),\n  H('Canneloni mit Fleischfüllung & Tomatensauce',['nudeln','rind'],{fresh:true,effort:3}),\n  H('Spaghetti Pomodoro mit Käse & Oliven',['nudeln','veg']),\n  H('Ravioli Pomodoro mit Gurkensalat',['nudeln','veg']),\n  H('Dinkelnudeln mit Provence-Sauce & Karotten-Mais-Salat',['nudeln','veg']),\n  H('Dinkelnudeln mit Gemüse & Käsesauce',['nudeln','veg']),\n  H('Spirelli Carbonara mit Gurkensalat & Feta',['nudeln']),\n  H('Tortellini mit Käsesauce & Cocktailtomaten',['nudeln','veg']),\n  H('Tortellini mit Spinat & Käsesauce',['nudeln','veg']),\n  H('Rindsgeschnetzeltes mit Nudeln & Karotten',['rind','nudeln']),\n  H('Gemüsepfanne mit Hähnchen & chinesischen Nudeln',['huhn','nudeln','veg']),\n  H('Putenbrust mit Spirelli, Erbsen & Karotten',['huhn','nudeln']),\n  H('Hähnchengeschnetzeltes mit Paprika, Zucchini & Couscous',['huhn']),\n  H('Hähnchengeschnetzeltes mit Couscous, Karotten & Erbsen',['huhn']),\n  H('Hähnchengeschnetzeltes mit Hirse & Romanesco',['huhn']),\n  H('Hähnchen mit Reis & Bohnensalat',['huhn']),\n  H('Hähnchenfilet mit Gemüsesauce, Vollkornreis & Brokkoli',['huhn']),\n  H('Hähnchen mit Kartoffeln & Karotten',['huhn','kartoffeln']),\n  H('Hähnchen mit Champignons, Pellkartoffeln & Gurkensalat',['huhn','kartoffeln']),\n  H('Hähnchenschnitzel mit Karotten & Vollkornreis',['huhn']),\n  H('Hähnchenfilet mit Couscous & Brokkoli',['huhn']),\n  H('Bouché à la Reine mit Reis, Erbsen & Karotten',['huhn']),\n  H('Putenschnitzel mit Dauphine-Kartoffeln & Karotten-Apfel-Salat',['huhn','kartoffeln']),\n  H('Putengeschnetzeltes mit Brokkoli & Hirse',['huhn']),\n  H('Chicken-Nuggets (hausgemacht) mit Kartoffelpüree, Erbsen & Karotten',['huhn','kartoffeln']),\n  H('Gebratener Reis mit Hähnchen & Gemüse',['huhn']),\n  H('Lachs mit Kartoffeln & Gurkensalat',['fisch','kartoffeln'],{fresh:true}),\n  H('Lachs auf Zucchinibett mit Basmatireis',['fisch'],{fresh:true}),\n  H('Lachs mit Couscous & Blumenkohl',['fisch'],{fresh:true}),\n  H('Lachs aus dem Ofen mit Vollkornreis & grünen Bohnen',['fisch'],{fresh:true}),\n  H('Lachs-Quiche mit Karotten-Sellerie-Salat',['fisch'],{fresh:true}),\n  H('Lachs mit Kartoffelpüree & Fenchel',['fisch','kartoffeln'],{fresh:true}),\n  H('Kabeljau aus dem Ofen mit Kürbis-Kartoffel-Püree',['fisch','kartoffeln'],{fresh:true}),\n  H('Kabeljau mit Vollkornreis & Ratatouille',['fisch'],{fresh:true}),\n  H('Kabeljau mit Blumenkohl & Ebly',['fisch'],{fresh:true}),\n  H('Kabeljau mit Lauchgemüse, Hirse & Karotten-Sellerie-Salat',['fisch'],{fresh:true}),\n  H('Kabeljau mit Couscous & Hokkaido-Creme',['fisch'],{fresh:true}),\n  H('Kabeljau mit Ofengemüse & Kartoffelpüree',['fisch','kartoffeln'],{fresh:true}),\n  H('Fisch mit Remoulade, Kartoffeln & grünem Salat',['fisch','kartoffeln'],{fresh:true}),\n  H('Fisch in der Folie mit Gemüse & Bulgur',['fisch'],{fresh:true}),\n  H('Fisch auf Gemüsebett mit Reis & Rote-Bete-Salat',['fisch'],{fresh:true}),\n  H('Duo vom Fisch auf Gemüsebett mit Vollkornreis',['fisch'],{fresh:true}),\n  H('Fischstäbchen mit Dillsauce, Vollkornreis & Gurkensalat',['fisch']),\n  H('Fish & Chips mit Gurkensalat',['fisch','kartoffeln']),\n  H('Fischbouletten mit Joghurt-Dip, Kürbis & Couscous',['fisch'],{fresh:true}),\n  H('Hamburger mit Pommes & grünem Salat',['rind']),\n  H('Mini-Hamburger mit Pommes & Salat',['rind']),\n  H('Rindfleisch-Bouletten mit Spätzle & Blumenkohl',['rind'],{fresh:true}),\n  H('Bouletten mit Kartoffelpüree & Kürbis',['rind','kartoffeln'],{fresh:true}),\n  H('Rindsbouletten mit Kartoffelpüree & Kürbisgemüse',['rind','kartoffeln'],{fresh:true}),\n  H('Rindsgeschnetzeltes mit Karotten-Kohlrabi-Gemüse & Bulgur',['rind']),\n  H('Rindsgeschnetzeltes mit Ratatouille & Reis',['rind']),\n  H('Rindsrouladen mit Rotkohl & Kartoffeln',['rind','kartoffeln'],{effort:3}),\n  H('Kalbsrouladen mit Champignons, Bulgur & Brokkoli',['rind'],{effort:3}),\n  H('Kalbsrouladen mit Reis & Brokkoli',['rind'],{effort:3}),\n  H('Kalbsragout mit Champignons, Spätzle & Gurkensalat',['rind']),\n  H('Kalbsschnitzel mit Pommes & Gurkensalat',['rind']),\n  H('Kalbsgeschnetzeltes Zürcher Art mit Reis',['rind']),\n  H('Kalbsfrikassee (Blanquette de veau) mit Reis, Erbsen & Karotten',['rind']),\n  H('Boeuf Bourguignon mit Pellkartoffeln',['rind','kartoffeln'],{effort:3}),\n  H('Gulasch mit Karotten & Spätzle',['rind'],{effort:3}),\n  H('Chili con Carne mit Vollkornreis & grünem Salat',['rind'],{fresh:true}),\n  H('Shepherd\\'s Pie mit Gurkensalat',['rind','kartoffeln'],{fresh:true,effort:3}),\n  H('Gehacktespfanne mit Kürbis-Gratin & Reis',['rind'],{fresh:true}),\n  H('Quesadilla mit Rind & Guacamole',['rind'],{fresh:true}),\n  H('Quesadilla mit Gemüse & Rind',['rind'],{fresh:true}),\n  H('Pizza mit gemischtem Salat',['veg']),\n  H('Dinkel-Pizza mit gemischtem Salat',['veg']),\n  H('Omelette mit Käse, Brokkoli & Kartoffeln',['veg','kartoffeln']),\n  H('Kartoffelpuffer mit Apfel-Birnen-Kompott',['veg','kartoffeln']),\n  H('Kniddelen (Kartoffelknödeln) mit Apfelmus',['veg','kartoffeln']),\n  H('Kniddelen mit Speck & Apfelmus',['wurst','kartoffeln']),\n  H('Pfannkuchen mit Apfelmus',['veg']),\n  H('Kohlrabischnitzel mit Kräuterdip, Brokkoli & Kartoffelpüree',['veg','kartoffeln']),\n  H('Vegetarischer Kartoffel-Gemüse-Gratin',['veg','kartoffeln'],{effort:3}),\n  H('Schupfnudel-Gratin',['veg','kartoffeln'],{effort:3}),\n  H('Gnocchi-Gemüsepfanne',['veg','kartoffeln']),\n  H('Gemüserisotto mit Cocktailtomaten & Parmesan',['veg']),\n  H('Gefüllte Zucchini mit Bulgur & Rote-Bete-Salat mit Feta',['veg']),\n  H('Gefüllte Zucchini mit Reis & Blumenkohl',['veg']),\n  H('Wiener Würstchen mit Schupfnudeln & Brokkoli',['wurst']),\n  H('Wiener Würstchen mit Senf, Kartoffelpüree & Rotkohl',['wurst','kartoffeln']),\n  H('Wiener Würstchen mit Bratkartoffeln & grünem Bohnensalat',['wurst','kartoffeln']),\n  H('Würstchen mit Pellkartoffeln & gemischtem Salat',['wurst','kartoffeln']),\n  H('Würstchen mit Kartoffelpüree & Karotten',['wurst','kartoffeln']),\n  H('Choucroute garni mit Bratkartoffeln & Erbsen',['wurst','kartoffeln']),\n  H('Pasteten (Paschtéitchen) mit Pommes & Salat',['wurst']),\n].map((d,i)=>({ id:i+1, ...d }));\n// Luxemburgische Namen (aus Stefans Word-Menüplänen) – für die luxemburgische Plan-Ansicht\nconst LB_NAMES = {\n  'Gemüsesuppe':'Geméiszopp','Tomatensuppe':'Tomatenzopp','Kürbissuppe':'Kürbiszopp','Lauchsuppe':'Porettenzopp',\n  'Blumenkohlsuppe':'Chouxfleurszopp','Brokkolisuppe':'Brokkolizopp','Selleriesuppe':'Zellerizopp','Kohlrabisuppe':'Kohlrabizopp',\n  'Karottensuppe':'Muertenzopp','Topinambursuppe':'Topinambourzopp','Kartoffelsuppe':'Gromperenzopp',\n  'Paprika-Karotten-Suppe':'Paprika-Muertenzopp','Erbsensuppe':'Iebessenzopp','Süßkartoffel-Karotten-Suppe':'Séissgromper-Muertzopp',\n  'Kürbis-Süßkartoffel-Suppe':'Kürbis-Séisgromperenzopp','Pastinakensuppe':'Pastinakenzopp','Spinatsuppe':'Spinatzopp',\n  'Bohnensuppe mit Kartoffeln':'Bounenzopp mat Gromper','Fenchelsuppe':'Fenchelzopp','Erbsen-Kartoffel-Suppe':'Iebessen-Gromperen-Zopp',\n  'Kürbis-Lauch-Suppe':'Kürbis-Porettenzopp','Karotten-Sellerie-Suppe':'Muerten-Zelleriezopp',\n  'Kartoffel-Kohlrabi-Suppe':'Gromperen-Kohlrabizopp','Butternut-Kürbissuppe':'Butternut-Kürbiszopp','Romanescosuppe':'Romanescozopp',\n  'Sellerie-Schwarzwurzel-Suppe':'Zellerie-Schwarz-Wuerzel-Zopp','Paprika-Tomaten-Suppe mit Frischkäse':'Paprika-Tomatenzopp mat Philadelphia',\n  'Lauch-Kartoffel-Suppe':'Poretten-Gromperenzopp','Zucchinisuppe':'Gourgettenzopp','Zucchini-Sellerie-Suppe':'Gourgetten-Zellerizopp',\n  'Zucchini-Karotten-Suppe':'Gourgetten-Muertenzopp',\n  'Rohkostteller':'Cruditéitenteller','Rote-Bete-Salat':'Rout Rommelszalot','Gefüllte Gurken':'Gefëllten Cornichoen',\n  'Mexikanischer Salat':'Mexikanesch Zalot','Tomate-Mozzarella':'Tomat-Mozzarella','Bohnensalat (Feierstengszalot)':'Feierstengszalot',\n  'Gemüsesticks mit Dip':'Geméis mat Dipp','Gefüllte Eier':'Gefëllten Eer','Tomatensalat':'Tomatenzalot',\n  'Griechischer Salat':'Grieschesch Zalot','Pizza-Schnecken':'Pizzaschnecken','Maiskörnersalat mit Ei':'Mauséiercherzalot mat gekachten Eër',\n  'Karotten-Sellerie-Salat mit Apfel':'Muerten-Zelleriezalot mat Apel','Linsensalat':'Lënsenzalot',\n  'Thunfisch-Reis-Salat':'Thon-Räiszalot','Rote-Linsen-Salat':'Rout Lënsenzalot','Salade Niçoise':'Salade Niçoise',\n  'Cracker mit Hummus':'Kräcker mat Humus','Avocado-Joghurt-Dip mit Gemüse':'Geméis mat Avocado-Joghurt-Dipp',\n  'Rote-Bete-Salat mit Feta & Kürbiskernen':'Rout Rommelszalot mat Feta a Kürbiskaeren','Bruschetta Italiana':'Bruschetta Italiana',\n  'Gemischter Salat':'Gemëschter Zalot','Frühlingsrollen':'Rouleau de Printemps','Toast mit Ziegenkäse & Honig':'Toast mat Geesekéis a Hunneg',\n  'Cracotte mit Thunfisch':'Cracotte mat Thon','Vitello Tonnato':'Vitello Tonato',\n  'Spaghetti Bolognese':'Spaghetti Bolognaise','Lasagne Bolognese':'Lasagne Bolognaise',\n  'Canneloni mit Fleischfüllung & Tomatensauce':'Canneloni mat Fleesch a Sauce Tomate',\n  'Spaghetti Pomodoro mit Käse & Oliven':'Spaghetti, Sauce Pomodoro mat gerapptem Kéis an Oliven',\n  'Ravioli Pomodoro mit Gurkensalat':'Ravioli à la Pomodoro mat Cornichongszalot',\n  'Dinkelnudeln mit Provence-Sauce & Karotten-Mais-Salat':'Dinkelnuddlen mat Sauce provençale an Muerten-Mais-Zalot',\n  'Dinkelnudeln mit Gemüse & Käsesauce':'Dinkelnuddelen mat gemëschtem Geméis a Kéiszooss',\n  'Spirelli Carbonara mit Gurkensalat & Feta':'Spirelli Carbonara a Kornichongszalot mat Feta',\n  'Tortellini mit Käsesauce & Cocktailtomaten':'Tortellini mat Kéiszoos a Cocktailtomaten',\n  'Tortellini mit Spinat & Käsesauce':'Tortellini mat Spinat a Kéiszoos',\n  'Rindsgeschnetzeltes mit Nudeln & Karotten':'Rëndsgeschnetzeltes mat Nuddelen a Muerten',\n  'Gemüsepfanne mit Hähnchen & chinesischen Nudeln':'Geméis-Paan mat Poulet a chinesesch Nuddelen',\n  'Putenbrust mit Spirelli, Erbsen & Karotten':'Dindebroscht mat Spirelli an Iebessen mat Muerten',\n  'Hähnchengeschnetzeltes mit Paprika, Zucchini & Couscous':'Pouletsgeschnetzeltes mat Paprika, Courgetten a Couscous',\n  'Hähnchengeschnetzeltes mit Couscous, Karotten & Erbsen':'Pouletgeschnëtzeltes, Couscous a Muerten-Ierbessen',\n  'Hähnchengeschnetzeltes mit Hirse & Romanesco':'Pouletgeschnëtzeltes mat Hirse a Romanesco',\n  'Hähnchen mit Reis & Bohnensalat':'Poulet mat Räis an Bounenzalot',\n  'Hähnchenfilet mit Gemüsesauce, Vollkornreis & Brokkoli':'Pouletsfilet mat Geméiszooss, Vollkarräis an Brokkoli',\n  'Hähnchen mit Kartoffeln & Karotten':'Poulet mat Gromperen an Muerten',\n  'Hähnchen mit Champignons, Pellkartoffeln & Gurkensalat':'Poulet mat Champignoen, gekachten Gromperen, Cornichongszalot',\n  'Hähnchenschnitzel mit Karotten & Vollkornreis':'Pouletsschnitzel mat Muerten a Vollkarräis',\n  'Hähnchenfilet mit Couscous & Brokkoli':'Filet vum Poulet, Couscous an Brokkoli',\n  'Bouché à la Reine mit Reis, Erbsen & Karotten':'Bouché à la Reine mat Räis an Iebessen mat Muerten',\n  'Putenschnitzel mit Dauphine-Kartoffeln & Karotten-Apfel-Salat':'Escalope de dinde mat Pommes Dauphines a Karotten-Apel-Zalot',\n  'Putengeschnetzeltes mit Brokkoli & Hirse':'Dindegeschnetzeltes mat Brokkoligeméis an Hirse',\n  'Chicken-Nuggets (hausgemacht) mit Kartoffelpüree, Erbsen & Karotten':'Chickennuggets Maison mat Gromperpurée, Iebessen a Muerten',\n  'Gebratener Reis mit Hähnchen & Gemüse':'Gebrodene Räis mat Poulet a Geméis',\n  'Lachs mit Kartoffeln & Gurkensalat':'Saumon mat Gromperen a Cornichongszalot',\n  'Lachs auf Zucchinibett mit Basmatireis':'Saumon um Zucchinibett a Basmatiräis',\n  'Lachs mit Couscous & Blumenkohl':'Saumon, Couscous a Chou-fleur',\n  'Lachs aus dem Ofen mit Vollkornreis & grünen Bohnen':'Saumon mat Vollkornräis a grénge Bounen',\n  'Lachs-Quiche mit Karotten-Sellerie-Salat':'Quiche mat Saumon an Muerten-Zellerie-Zalot',\n  'Lachs mit Kartoffelpüree & Fenchel':'Gebrodene Saumon mat Purée a Fenchel',\n  'Kabeljau aus dem Ofen mit Kürbis-Kartoffel-Püree':'Cabillaud am Schäffchen mat Kürbis-Gromper-Purée',\n  'Kabeljau mit Vollkornreis & Ratatouille':'Cabillaud mat Vollkornreis a Ratatouille',\n  'Kabeljau mit Blumenkohl & Ebly':'Kabeljau mat Chou-fleur an Ebly',\n  'Kabeljau mit Lauchgemüse, Hirse & Karotten-Sellerie-Salat':'Cabillaud mat Poretten, Hirse an Muerten-Zellerizalot',\n  'Kabeljau mit Couscous & Hokkaido-Creme':'Cabillaud mat Couscous an Hokkaidocrème',\n  'Kabeljau mit Ofengemüse & Kartoffelpüree':'Cabillaud mat Geméis am Schäffchen a Gromperepuree',\n  'Fisch mit Remoulade, Kartoffeln & grünem Salat':'Fësch mat Remoulade, Gromperen a grénger Zalot',\n  'Fisch in der Folie mit Gemüse & Bulgur':'Fësch an der Papillot mat Geméis a Bulgur',\n  'Fisch auf Gemüsebett mit Reis & Rote-Bete-Salat':'Fësch um Geméisbett mat Räis a roud Rommelszalot',\n  'Duo vom Fisch auf Gemüsebett mit Vollkornreis':'Duo vum Fësch um Geméisbett mat Vollkarräis',\n  'Fischstäbchen mit Dillsauce, Vollkornreis & Gurkensalat':'Fish-Sticks mat Dillszooss, Vollkarräis a Cornichongszalot',\n  'Fish & Chips mit Gurkensalat':'Fish & Chips mat Cornichongszalot',\n  'Fischbouletten mit Joghurt-Dip, Kürbis & Couscous':'Fëschbouletten mat Yoghurtdip, Kürbis a Couscous',\n  'Hamburger mit Pommes & grünem Salat':'Hamburger mat Fritten a grénger Zalot',\n  'Mini-Hamburger mit Pommes & Salat':'Mini-Hamburger mat Fritten an Zalot',\n  'Rindfleisch-Bouletten mit Spätzle & Blumenkohl':'Rëndsbouletten mat Spätzle a Chou-fleur',\n  'Bouletten mit Kartoffelpüree & Kürbis':'Bouletten mat Püree a Kürbis',\n  'Rindsbouletten mit Kartoffelpüree & Kürbisgemüse':'Rëndsbouletten mat Gromperpurée a Kürbisgeméis',\n  'Rindsgeschnetzeltes mit Karotten-Kohlrabi-Gemüse & Bulgur':'Rëndsgeschnetzeltes mat Muerten-Kohlrabigeméis a Bulgur',\n  'Rindsgeschnetzeltes mit Ratatouille & Reis':'Rëndsgeschnetzeltes mat Ratatouille a Räis',\n  'Rindsrouladen mit Rotkohl & Kartoffeln':'Rëndsrouladen mat roude Kabes an Gromperen',\n  'Kalbsrouladen mit Champignons, Bulgur & Brokkoli':'Kallefsrouladen mat Champignoen, Boulgour a Brokkoli',\n  'Kalbsrouladen mit Reis & Brokkoli':'Kallefsrouladen mat Räis a Brokkoli',\n  'Kalbsragout mit Champignons, Spätzle & Gurkensalat':'Kallefsragout mat Champignoen, Spätzle a Kornichongszalot',\n  'Kalbsschnitzel mit Pommes & Gurkensalat':'Kallefsschnitzel mat Fritten a Cornichongszalot',\n  'Kalbsgeschnetzeltes Zürcher Art mit Reis':'Kallefsgeschnetzeltes op Zürcher Art mat Räis',\n  'Kalbsfrikassee (Blanquette de veau) mit Reis, Erbsen & Karotten':'Blanquette de veau mat Räis, Iebessen a Muerten',\n  'Boeuf Bourguignon mit Pellkartoffeln':'Boeuf Bourguignon mat gekachten Gromperen',\n  'Gulasch mit Karotten & Spätzle':'Gulasch mat Muerten a Spätzle',\n  'Chili con Carne mit Vollkornreis & grünem Salat':'Chili con carne mat Vollkarräis a grénger Zalot',\n  'Shepherd\\'s Pie mit Gurkensalat':'Shepherd\\'s Pie mat Cornichongszalot',\n  'Gehacktespfanne mit Kürbis-Gratin & Reis':'Gehacktespan mat Kürbis-Gratin a Räis',\n  'Quesadilla mit Rind & Guacamole':'Quesadilla mat Rënd a Guacamole',\n  'Quesadilla mit Gemüse & Rind':'Quesadilla mat Geméis a Rënd',\n  'Pizza mit gemischtem Salat':'Pizza mat gemëschter Zalot',\n  'Dinkel-Pizza mit gemischtem Salat':'Dinkelpizza mat gemëschter Zalot',\n  'Omelette mit Käse, Brokkoli & Kartoffeln':'Omlette mat Kéis, Brokkoli a Gromperen',\n  'Kartoffelpuffer mit Apfel-Birnen-Kompott':'Gromperekichelcher mat Apel-Birekompott',\n  'Kniddelen (Kartoffelknödeln) mit Apfelmus':'Kniddelen mat Apelkompott',\n  'Kniddelen mit Speck & Apfelmus':'Kniddelen mat Speck an Äppelkompott',\n  'Pfannkuchen mit Apfelmus':'Pangescher mat Apelkompott',\n  'Kohlrabischnitzel mit Kräuterdip, Brokkoli & Kartoffelpüree':'Kohlrabischnitzel mat Kräiderdipp, Brokkoli a Gromperepuree',\n  'Vegetarischer Kartoffel-Gemüse-Gratin':'Vegetareschen Gromper-Geméis-Gratin mat gemëschter Zalot',\n  'Schupfnudel-Gratin':'Schupfnudelgratin',\n  'Gnocchi-Gemüsepfanne':'Gnocchi-Geméispaan',\n  'Gemüserisotto mit Cocktailtomaten & Parmesan':'Geméisrisotto mat Cocktailtomaten, Parmesan a grénger Zalot',\n  'Gefüllte Zucchini mit Bulgur & Rote-Bete-Salat mit Feta':'Gefëllten Gourgetten, Bulgur a Rout Rommelszalot mat Feta an Kürbiskären',\n  'Gefüllte Zucchini mit Reis & Blumenkohl':'Gefëllte Courgetten mat Räis a Chou-fleur',\n  'Wiener Würstchen mit Schupfnudeln & Brokkoli':'Wäinzoosiss mat Schupfnuddelen a Brokkoli',\n  'Wiener Würstchen mit Senf, Kartoffelpüree & Rotkohl':'Wäinzoossis mat Moschterzooss, Pürée a roude Kabes',\n  'Wiener Würstchen mit Bratkartoffeln & grünem Bohnensalat':'Wäinzoosiss mat gebrode Gromperen a grénger Bounenzalot',\n  'Würstchen mit Pellkartoffeln & gemischtem Salat':'Wurschtskonschtmati…',\n  'Würstchen mit Kartoffelpüree & Karotten':'Wiirchercher mat Gromperepuree a Muerten',\n  'Choucroute garni mit Bratkartoffeln & Erbsen':'Choucroûte garni mat gebrode Gromperen an Iebessen',\n  'Pasteten (Paschtéitchen) mit Pommes & Salat':'Paschtéitchen mat Fritten an Zalot'\n};\nLB_NAMES['Würstchen mit Pellkartoffeln & gemischtem Salat'] = 'Wërschtercher mat gekachte Gromperen a gemëschter Zalot';\n// Regeltypen: catWeek (Kategorie n× pro Woche), monthly (Monatsgericht max n×/Monat),\n// minGap (min. Abstand in Wochen), freshDays (frische Gerichte nur an Tagen X), effortDays (Aufwand n bevorzugt an Tagen X),\n// dishDay (festes Gericht an festen Wochentagen)\nconst DEFAULT_RULES = [\n  // ---- Suppen: ⭐-Lieblingssuppen jeden Monat garantiert & verteilt, Rest füllt auf ----\n  { id:'r11', course:'suppe', type:'minGap',   params:{ weeks:3 } },\n  { id:'r12', course:'suppe', type:'monthly',  params:{ max:2 } },\n  { id:'r13', course:'suppe', type:'freshDays', params:{ days:[2,3,4] } },\n  { id:'r19', course:'suppe', type:'dishDay',  params:{ name:'Gemüsesuppe', days:[4] } },\n  { id:'r20', course:'suppe', type:'monthlyMust', params:{ perWeek:2 } },\n  { id:'r21', course:'suppe', type:'sameVegWeek', params:{ max:1 } },\n  // ---- Vorspeisen ----\n  { id:'r14', course:'vorspeise', type:'minGap', params:{ weeks:4 } },\n  { id:'r15', course:'vorspeise', type:'monthly', params:{ max:1 } },\n  { id:'r16', course:'vorspeise', type:'freshDays', params:{ days:[2,3,4] } },\n  { id:'r17', course:'vorspeise', type:'perWeek', params:{ max:2 } },\n  { id:'r18', course:'vorspeise', type:'courseDepEffort', params:{ course:'haupt', effortMax:2 } },\n  // ---- Hauptgerichte: ⭐-Gerichte jeden Monat garantiert & verteilt ----\n  { id:'r1', course:'haupt', type:'catWeek',  params:{ cat:'nudeln', min:1, max:1 } },\n  { id:'r2', course:'haupt', type:'catWeek',  params:{ cat:'rind', min:1, max:1 } },\n  { id:'r3', course:'haupt', type:'catWeek',  params:{ cat:'huhn', min:1, max:1 } },\n  { id:'r4', course:'haupt', type:'catWeek',  params:{ cat:'fisch', min:1, max:1 } },\n  { id:'r5', course:'haupt', type:'catWeek',  params:{ cat:'veg', min:1, max:1 } },\n  { id:'r6', course:'haupt', type:'catWeek',  params:{ cat:'kartoffeln', min:1, max:2 } },\n  { id:'r6b', course:'haupt', type:'catWeek',  params:{ cat:'wurst', min:0, max:1 } },\n  { id:'r7', course:'haupt', type:'monthly',  params:{ max:1 } },\n  { id:'r8', course:'haupt', type:'minGap',   params:{ weeks:4 } },\n  { id:'r9', course:'haupt', type:'freshDays', params:{ days:[2,3,4] } },\n  { id:'r10', course:'haupt', type:'effortDays', params:{ effort:3, days:[3,4] } },\n  { id:'r22', course:'haupt', type:'monthlyMust', params:{ perWeek:2 } },\n];\n// Gleiche Gemüse-Zutat im Namen erkennen (z. B. „Karottensuppe\" ↔ „Paprika-Karotten-Suppe\")\nfunction vegTokens(name){\n  const STOP = new Set(['suppe','zopp','gemüse','gemuse','mit','und','salat','creme','frischkäse','püree','kompott']);\n  return (name.toLowerCase().split(/[^a-zäöüß]+/)).filter(t=>t.length>=5 && !STOP.has(t));\n}\nfunction sharesVeg(a,b){\n  const ta = vegTokens(a), tb = vegTokens(b);\n  for(const x of ta) for(const y of tb) if(x.startsWith(y) || y.startsWith(x)) return true;\n  return false;\n}\nconst RULE_LABELS = {\n  catWeek: 'Kategorie pro Woche', monthly: 'Monatsgericht (⭐) max. …/Monat',\n  minGap: 'Mindestabstand gleiche Gerichte (Wochen)', freshDays: 'Frische Gerichte (🐟) nur an Tagen', effortDays: 'Aufwendige Gerichte bevorzugt an Tagen',\n  perWeek: 'Max. Gerichte pro Woche', courseDepEffort: 'Nur an Tagen mit einfachem Hauptgericht',\n  dishDay: 'Festes Gericht an Wochentagen',\n  monthlyMust: '⭐-Gerichte: jedes 1× pro Monat, max. … pro Woche (Pflicht)',\n  sameVegWeek: 'Gleiches Gemüse (im Namen): max. …× pro Woche'\n};\n\n// ---------- Kombi-Bausteine (Protein + Feculon + Gemüse) ----------\nconst P = (name,cats,lb)=>({ name, nameLb:lb||'', cats:cats||[] });\nconst DEFAULT_PARTS = {\n  protein: [\n    P('Rindergeschnetzeltes',['rind']), P('Kalbsgeschnetzeltes',['rind']),\n    P('Hühnergeschnetzeltes',['huhn']), P('Hühnerfilet',['huhn']),\n    P('Fischfilet',['fisch']), P('Lachsfilet',['fisch']),\n    P('Omelette',['veg'])\n  ].map((p,i)=>({ id:1000+i, ...p })),\n  feculon: [\n    P('Reis'), P('Kartoffelpüree',['kartoffeln']), P('Kartoffeln',['kartoffeln']),\n    P('Nudeln',['nudeln']), P('Couscous'), P('Quinoa'), P('Polenta')\n  ].map((p,i)=>({ id:2000+i, ...p })),\n  gemuese: [\n    P('Brokkoli'), P('Karotten'), P('Erbsen & Karotten'), P('Grüne Bohnen'),\n    P('Blumenkohl'), P('Zucchini'), P('Spinat'), P('Kürbis'), P('Mais'), P('Paprika')\n  ].map((p,i)=>({ id:3000+i, ...p }))\n};\n// ---------- Laden / Speichern ----------\nlet cats, dishes, rules, plan, parts, planLang = 'de';\nfunction stateToObj(){ return { version:VERSION, cats, dishes, rules, parts }; }\nfunction loadAll(){\n  cats = load('mp_cats', DEFAULT_CATS);\n  dishes = load('mp_dishes', STARTER_DISHES);\n  rules = load('mp_rules', DEFAULT_RULES);\n  parts = load('mp_parts', DEFAULT_PARTS);\n  plan = load('mp_plan', null);\n  planLang = load('mp_lang', 'de');\n  // Einmalige Übernahme fehlender Standard-Regeln (z. B. Vorspeisen-Regeln ab v1.4.1), falls alte Regeln gespeichert sind\n  if(!localStorage.getItem('mp_rules_149')){\n    let added = false;\n    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }\n    localStorage.setItem('mp_rules_149','1');\n    if(added) saveAll();\n  }\n  // v1.4.12: Regel „Jeden Freitag Gemüsesuppe\" (r19) einmalig ergänzen\n  if(!localStorage.getItem('mp_rules_1412')){\n    let added = false;\n    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }\n    localStorage.setItem('mp_rules_1412','1');\n    if(added) saveAll();\n  }\n  // v1.4.13: Regel „⭐-Suppen mindestens 1× pro Monat\" (r20) einmalig ergänzen\n  if(!localStorage.getItem('mp_rules_1413')){\n    let added = false;\n    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }\n    localStorage.setItem('mp_rules_1413','1');\n    if(added) saveAll();\n  }\n  // v1.5.0: Regeln einmalig auf das neue, aufgeräumte Regelwerk zurücksetzen (nach Stefans Anweisungen)\n  if(!localStorage.getItem('mp_rules_150')){\n    rules = DEFAULT_RULES.map(r=>({ ...r, params:{ ...r.params } }));\n    localStorage.setItem('mp_rules_150','1');\n    saveAll();\n  }\n  // v1.5.1: ⭐-Hauptgerichte dürfen 2× pro Woche (verteilt); Nudeln bleiben über Kategorie-Regel auf 1/Woche begrenzt\n  if(!localStorage.getItem('mp_rules_151')){\n    const r = rules.find(x=>x.id==='r22' && x.type==='monthlyMust');\n    if(r && (r.params.perWeek||1)===1) r.params.perWeek = 2;\n    localStorage.setItem('mp_rules_151','1');\n    saveAll();\n  }\n  // v1.6.1: ⭐-Suppen max. 2/Woche – bei 6+ Sterne-Suppen passt 1/Woche rechnerisch nicht in den Monat\n  if(!localStorage.getItem('mp_rules_160')){\n    const r = rules.find(x=>x.id==='r20' && x.type==='monthlyMust');\n    if(r && (r.params.perWeek||1)===1) r.params.perWeek = 2;\n    localStorage.setItem('mp_rules_160','1');\n    saveAll();\n  }\n}\nfunction load(k, fb){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? fb; } catch(e){ return fb; } }\nfunction saveAll(){\n  localStorage.setItem('mp_cats', JSON.stringify(cats));\n  localStorage.setItem('mp_dishes', JSON.stringify(dishes));\n  localStorage.setItem('mp_rules', JSON.stringify(rules));\n  if(parts) localStorage.setItem('mp_parts', JSON.stringify(parts));\n  if(plan) localStorage.setItem('mp_plan', JSON.stringify(plan)); else localStorage.removeItem('mp_plan');\n  localStorage.setItem('mp_lang', JSON.stringify(planLang));\n}\n\n// ---------- Sprachinput ----------\nlet recording = false;\nfunction startSpeech(targetId, cb){\n  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;\n  if(!SR){ alert('Sprachinput wird von diesem Browser nicht unterstützt (Chrome/Edge verwenden).'); return; }\n  if(recording && window._recog){ window._recog.stop(); return; }\n  const r = new SR(); window._recog = r; r.lang = 'de-DE'; r.interimResults = false;\n  r.onresult = (e)=>{ document.getElementById(targetId).value = e.results[0][0].transcript.trim(); if(cb) cb(); };\n  r.onend = ()=>{ recording=false; if(cb) cb(); };\n  r.onerror = ()=>{ recording=false; if(cb) cb(); };\n  r.start(); recording = true; if(cb) cb();\n}\n\n// ---------- Planner (regelbasiert, erfindet NIE neue Gerichte) ----------\n// Kombi-Gericht zusammensetzen: Protein + Beilage + Gemüse, keine Dopplung in der Woche, Kategorien respektieren\nfunction composeCombo(pd, placedInWeek, w, rc){\n  const prot = pd.part;\n  const okCats = (item)=>{\n    for(const r of rc){ if(r.type==='catWeek' && (item.cats||[]).includes(r.params.cat)){\n      const used = placedInWeek.filter(x=>x && x.d.cats.includes(r.params.cat)).length;\n      if(used >= r.params.max) return false;\n    } }\n    return true;\n  };\n  const fecs = (parts.feculon||[]).filter(f=>okCats(f) && !placedInWeek.some(x=>x && x.f && x.f.id===f.id));\n  const gems = (parts.gemuese||[]).filter(g=>okCats(g) && !placedInWeek.some(x=>x && x.g && x.g.id===g.id));\n  if(!fecs.length || !gems.length) return null;\n  const pick = (arr, salt)=> arr[(Math.abs(prot.id)*7 + w*13 + salt*29) % arr.length];\n  const f = pick(fecs, 1), g = pick(gems, 2);\n  const lbN = (x)=> x.nameLb || '';\n  const nameLb = (lbN(prot) && lbN(f) && lbN(g)) ? lbN(prot)+' mat '+lbN(f)+' an '+lbN(g) : '';\n  return { d:{ id: pd.id, course:'haupt', combo:true, part:prot,\n    name: prot.name + ' mit ' + f.name + ' & ' + g.name, nameLb,\n    cats: [...new Set([...(prot.cats||[]), ...(f.cats||[])])], monthly:false, fresh:false, effort: prot.effort||2 }, f, g };\n}\nfunction generatePlan(){\n  const out = [];\n  const N_WEEKS = 13;\n  const allPlaced = {};\n  // Hauptgericht zuerst planen, damit Vorspeisen-Regeln den Aufwand des Tages kennen\n  const PLANNER_ORDER = ['suppe','haupt','vorspeise'];\n  for(const c of PLANNER_ORDER){\n    const cd = dishes.filter(d=>d.course===c && !d.archived);\n    if(cd.length===0 && !(c==='haupt' && (parts.protein||[]).length)) continue;\n    // Kombi-Gerichte (Protein + Beilage + Gemüse) nur bei Hauptgerichten\n    let comboPool = [];\n    if(c==='haupt') for(const p of (parts.protein||[])) comboPool.push({ id:'k'+p.id, course:'haupt', combo:true, part:p, name:p.name, cats:[...(p.cats||[])], monthly:false, fresh:false, effort:p.effort||2 });\n    const pool = cd.concat(comboPool);\n    const rc = rules.filter(r=>r.course===c);\n    const lastUsed = {}, monthCount = {};\n    // ⭐-Gerichte gleichmäßig Zielwochen zuweisen (0–3, gestaffelt) statt zufällig – schöne Verteilung übers Monat\n    const starWeek = {};\n    cd.filter(d=>d.monthly).forEach((d,i)=> starWeek[d.id] = i%4);\n    const placed = Array(N_WEEKS*5).fill(null);\n    for(let w=0; w<N_WEEKS; w++){\n      let placedInWeek = [];\n      const takenDays = new Set();\n      const m = Math.floor(w/4.34);\n      const wkInMonth = Math.min(w - Math.floor(m*4.34), 3);\n      // Hartes Regelwerk: darf Gericht d an diesem Tag? (relaxCats: Kategorie-Limits notfalls ignorieren)\n      const okDish = (d, day, idx, relaxCats)=>{\n        for(const r of rc){\n          const p = r.params;\n          if(!relaxCats && r.type==='catWeek' && d.cats.includes(p.cat)){\n            const used = placedInWeek.filter(x=>x && x.d.cats.includes(p.cat)).length;\n            if(used >= p.max) return false;\n          }\n          if(r.type==='freshDays' && d.fresh && !p.days.includes(day)) return false;\n          if(r.type==='monthlyMust' && d.monthly && placedInWeek.filter(x=>x && x.d.monthly).length >= (p.perWeek||1)) return false;\n          if(r.type==='perWeek' && placedInWeek.length >= p.max) return false;\n          if(r.type==='sameVegWeek' && placedInWeek.some(x=>x && sharesVeg(x.d.name, d.name)) && placedInWeek.filter(x=>x && sharesVeg(x.d.name, d.name)).length >= p.max) return false;\n          if(r.type==='courseDepEffort'){ const dep = (allPlaced[p.course]||[])[idx]; if(dep && dep.effort > p.effortMax) return false; }\n          if(r.type==='monthly' && d.monthly && (monthCount[d.id]||{})[m]) return false;\n          if(r.type==='minGap' && lastUsed[d.id]!==undefined && (w - Math.floor(lastUsed[d.id]/5)) < p.weeks) return false;\n          if(d.combo && placedInWeek.some(x=>x && x.d.combo && x.d.part && d.part && x.d.part.id===d.part.id)) return false;\n        }\n        return true;\n      };\n      // Pflicht-⭐ (monthlyMust) als Erstes setzen – VOR allen anderen Gerichten,\n      // damit Kombis und Kategorie-Zähler ihnen keine Tage wegnehmen\n      const mmr = rc.find(r=>r.type==='monthlyMust');\n      if(mmr){\n        const forcedDays = new Set();\n        for(const r of rc) if(r.type==='dishDay') (r.params.days||[]).forEach(x=>forcedDays.add(x));\n        let cap = mmr.params.perWeek||1;\n        for(const d of pool.filter(d=>d.monthly && !((monthCount[d.id]||{})[m]) && wkInMonth >= (starWeek[d.id] ?? Math.abs(d.id)%4))){\n          if(cap<=0) break;\n          for(let day=0; day<5; day++){\n            if(takenDays.has(day) || forcedDays.has(day)) continue;\n            const idx = w*5+day;\n            if(!okDish(d, day, idx, false)) continue;\n            placedInWeek.push({ d, day }); takenDays.add(day);\n            lastUsed[d.id] = idx; monthCount[d.id] = monthCount[d.id]||{}; monthCount[d.id][m] = true;\n            cap--; break;\n          }\n        }\n      }\n      for(let day=0; day<5; day++){\n        if(takenDays.has(day)) continue;\n        const idx = w*5+day;\n        let cands = pool.filter(d=>okDish(d, day, idx, false));\n        if(cands.length===0) cands = pool.filter(d=>okDish(d, day, idx, true));   // notfalls Kategorie-Limits lockern: lieber ein Gericht als ein leerer Tag\n        // Aufwand-Präferenz als Bewertung\n        const scored = cands.map(d=>{\n          let s = 0;\n          for(const r of rc){ if(r.type==='effortDays' && d.effort===r.params.effort && r.params.days.includes(day)) s += 2;\n            if(r.type==='effortDays' && d.effort===r.params.effort && !r.params.days.includes(day)) s -= 2;\n            // Kategorie-Mindestmenge aktiv ansteuern (z. B. „Huhn mind. 1× pro Woche\")\n            if(r.type==='catWeek' && r.params.min>0 && d.cats.includes(r.params.cat)){\n              const used = placedInWeek.filter(x=>x && x.d.cats.includes(r.params.cat)).length;\n              if(used < r.params.min) s += 3;\n            }\n          }\n          if(placedInWeek.some(p=>p.d.id===d.id)) s -= 5;               // nicht zweimal in derselben Woche\n          s += Math.min((lastUsed[d.id]===undefined?999:(idx-lastUsed[d.id]))/7, 6)/6;  // lange nicht verwendet = besser\n          if(d.monthly){\n            const mr = rc.find(r=>r.type==='monthly');\n            if(mr){\n              const m = Math.floor(w/4.34);\n              const usedThisMonth = (monthCount[d.id]||{})[m];\n              if(!usedThisMonth){\n                const prefWeek = starWeek[d.id] ?? (Math.abs(d.id) % 4);       // Zielwoche im Monat, verteilt die ⭐-Gerichte\n                const wkInMonth = Math.min(w - Math.floor(m*4.34), 3);\n                s += wkInMonth >= prefWeek ? 8 : 2;                 // ab Zielwoche stark bevorzugt\n              }\n            } else s += 1;\n          }\n          s += ((Math.abs(d.id)*31 + w*17 + day*7) % 100)/1000;          // kleine Streuung, damit Tage/Gerichte variieren\n          return { d, s };\n        }).sort((a,b)=>b.s-a.s);\n        // Festes Gericht an festen Wochentagen (dishDay): überschreibt alle anderen Regeln\n        let forced = null;\n        for(const r of rc){ const p=r.params; if(r.type==='dishDay' && p.days.includes(day)){ const fd = cd.find(d=>d.name===p.name); if(fd){ forced = fd; break; } } }\n        const best = forced ? { d:forced } : scored[0];\n        if(best){\n          let bd = best.d, cf = null, cg = null;\n          if(bd.combo){ const cc = composeCombo(bd, placedInWeek, w, rc); if(cc){ bd = cc.d; cf = cc.f; cg = cc.g; } else { const alt = scored.find(x=>!x.d.combo); bd = alt ? alt.d : null; } }\n          if(bd){ placedInWeek.push({ d:bd, day, f:cf, g:cg }); lastUsed[bd.id] = idx;\n            if(bd.monthly){ monthCount[bd.id]=monthCount[bd.id]||{}; monthCount[bd.id][m]=true; } }\n        }\n      }\n      for(const pe of placedInWeek) placed[w*5+pe.day] = pe.d;\n    }\n    allPlaced[c] = placed;\n    out.push({ course:c, days:placed });\n  }\n  plan = out;\n  const warnings = checkPlanConflicts(out, N_WEEKS);\n  saveAll(); render();\n  if(warnings.length) showWarnings(warnings);\n}\n// Prüft den fertigen Plan auf Regeln, die sich nicht einhalten ließen\nfunction checkPlanConflicts(out, N_WEEKS){\n  const warnings = [];\n  for(const o of out){\n    const c = o.course, days = o.days;\n    const rc = rules.filter(r=>r.course===c);\n    // 1) Zu wenige Gerichte platziert („max. pro Woche\"-Regeln erzeugen bewusst leere Tage – kein Konflikt)\n    const perWeekRule = rc.find(r=>r.type==='perWeek');\n    const quota = perWeekRule ? perWeekRule.params.max : 5;\n    let shortWeeks = 0, missingTotal = 0;\n    for(let w=0; w<N_WEEKS; w++){\n      const placedCnt = [0,1,2,3,4].filter(day=>days[w*5+day]).length;\n      if(placedCnt < quota){ shortWeeks++; missingTotal += quota - placedCnt; }\n    }\n    if(shortWeeks) warnings.push(COURSES[c]+': in '+shortWeeks+' Woche(n) konnten zu wenige Gerichte platziert werden ('+missingTotal+' Tag(e) mehr leer als vorgesehen) – zu wenige Gerichte oder Regeln zu streng.');\n    // 2) Festes Gericht an festen Tagen nicht eingehalten\n    for(const r of rc) if(r.type==='dishDay'){\n      let miss = 0;\n      (r.params.days||[]).forEach(day=>{ for(let w=0; w<N_WEEKS; w++){ const d = days[w*5+day]; if(!d || d.name!==r.params.name) miss++; } });\n      if(miss) warnings.push(COURSES[c]+': Festes Gericht „'+r.params.name+'\" fehlt '+miss+'× – Gericht umbenannt, archiviert oder gelöscht?');\n    }\n    // 3) Pflicht-⭐ nicht in jedem Monat\n    if(rc.some(r=>r.type==='monthlyMust')){\n      const totalMonths = Math.floor((N_WEEKS-1)/4.34)+1;\n      for(const d of dishes.filter(x=>x.course===c && x.monthly && !x.archived)){\n        const found = new Set();\n        for(let w=0; w<N_WEEKS; w++) for(let day=0; day<5; day++){ const p = days[w*5+day]; if(p && p.id===d.id) found.add(Math.floor(w/4.34)); }\n        const miss = totalMonths - found.size;\n        if(miss>0) warnings.push(COURSES[c]+': ⭐ „'+d.name+'\" fehlt in '+miss+' Monat('+(miss>1?'e':'')+') – zu viele ⭐-Gerichte oder Regeln zu streng.');\n      }\n    }\n    // 4) Kategorie-Mindestmenge pro Woche nicht erreicht\n    for(const r of rc) if(r.type==='catWeek' && r.params.min>0){\n      let miss = 0;\n      for(let w=0; w<N_WEEKS; w++){\n        let cnt = 0; for(let day=0; day<5; day++){ const d = days[w*5+day]; if(d && d.cats.includes(r.params.cat)) cnt++; }\n        if(cnt < r.params.min) miss++;\n      }\n      const cl = (cats.find(x=>x.id===r.params.cat)||{}).label || r.params.cat;\n      if(miss) warnings.push(COURSES[c]+': Kategorie „'+cl+'\" fehlt in '+miss+' Woche(n) – evtl. zu wenige Gerichte dieser Kategorie.');\n    }\n  }\n  return warnings;\n}\nfunction showWarnings(warnings){\n  const old = document.getElementById('warnbox'); if(old) old.remove();\n  const b = document.createElement('div'); b.id = 'warnbox';\n  b.innerHTML = `<div class=\"card\"><h2>⚠️ Hinweise zum Plan</h2>\n    <div class=\"hint\">Der Plan wurde erstellt, aber folgende Regeln ließen sich nicht vollständig einhalten:</div>\n    ${warnings.map(w=>`<div class=\"witem\">${esc(w)}</div>`).join('')}\n    <div class=\"actions\"><button class=\"btn\" onclick=\"document.getElementById('warnbox').remove()\">Alles klar</button></div></div>`;\n  document.body.appendChild(b);\n}\n\n// ---------- UI-Gerüst ----------\nconst app = document.getElementById('app');\nlet tab = 'haupt';\nconst TABS = ['suppe','vorspeise','haupt','kombis','monatlich','archiv','plan','regeln','sicherung'];\nfor(const t of TABS){\n  document.getElementById('tab-'+t).onclick = ()=>{ tab=t; editId=null; render(); };\n}\nfunction syncTab(){\n  for(const t of TABS) document.getElementById('tab-'+t).classList.toggle('active', tab===t);\n  document.querySelectorAll('nav button').forEach(b=>b.style.background='');\n  document.getElementById('tab-'+tab).classList.add('active');\n}\nfunction render(){ syncTab();\n  if(tab==='monatlich') renderMonthly();\n  else if(tab==='kombis') renderKombis();\n  else if(tab==='archiv') renderArchiv();\n  else if(tab==='plan') renderPlan();\n  else if(tab==='regeln') renderRules();\n  else if(tab==='sicherung') renderBackup();\n  else renderDishes(tab);\n}\nfunction esc(s){ return String(s).replace(/[&<>\"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c])); }\nfunction catChip(id){ const c = cats.find(x=>x.id===id); if(!c) return ''; return `<span class=\"tag\" style=\"background:${c.color}1a;color:${c.color}\">${c.icon} ${esc(c.label)}</span>`; }\n\n// ---------- Tab: Gerichte (Suppe / Vorspeise / Hauptgericht) ----------\nlet form = { name:'', nameLb:'', cats:[], monthly:false, fresh:false, effort:2 };\nlet editId = null;\nfunction resetForm(){ form = { name:'', nameLb:'', cats:[], monthly:false, fresh:false, effort:2 }; editId=null; }\nfunction syncName(){ const el = document.getElementById('dishName'); if(el) form.name = el.value; const lb = document.getElementById('dishNameLb'); if(lb) form.nameLb = lb.value; }\nfunction setFlag(key){ syncName(); form[key] = !form[key]; renderDishes(currentDishCourse()); }\nfunction setEffort(e){ syncName(); form.effort = e; renderDishes(currentDishCourse()); }\nfunction renderDishes(course){\n  const list = dishes.filter(d=>d.course===course && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));\n  const isEdit = editId!==null;\n  app.innerHTML = `\n  <div class=\"card\">\n    <h2>${isEdit?'✏️ Hauptgericht bearbeiten':'➕ Neues '+(course==='haupt'?'Hauptgericht':COURSES[course])}</h2>\n    <input type=\"text\" id=\"dishName\" placeholder=\"${COURSES[course]} sagen oder tippen …\" value=\"${esc(form.name)}\">\n    <input type=\"text\" id=\"dishNameLb\" placeholder=\"Name op Lëtzebuergesch (facultativ, fir de Plang)\" value=\"${esc(form.nameLb||'')}\">\n    <button class=\"btn ${recording?'rec':''}\" style=\"margin-bottom:10px\" onclick=\"startSpeech('dishName',()=>renderDishes('${course}'))\">${recording?'🔴 Aufnahme … tippen zum Stoppen':'🎤 Ansagen'}</button>\n    <div class=\"hint\">Kategorien (mehrfach möglich):</div>\n    <div class=\"chiprow\">${cats.map(c=>`<span class=\"chip ${form.cats.includes(c.id)?'on':''}\" style=\"${form.cats.includes(c.id)?'background:'+c.color+';border-color:'+c.color:''}\" onclick=\"toggleCat('${c.id}')\">${c.icon} ${esc(c.label)}</span>`).join('')}</div>\n    <div class=\"chiprow\">\n      <span class=\"chip ${form.monthly?'on':''}\" onclick=\"setFlag('monthly')\">⭐ 1× pro Monat</span>\n      <span class=\"chip ${form.fresh?'on':''}\" onclick=\"setFlag('fresh')\">🐟 frische Lieferung</span>\n    </div>\n    <div class=\"hint\">Arbeitsaufwand:</div>\n    <div class=\"chiprow\">${[1,2,3].map(e=>`<span class=\"chip ${form.effort===e?'on':''}\" onclick=\"setEffort(${e})\">${['','wenig','mittel','viel'][e]}</span>`).join('')}</div>\n    <div class=\"actions\">\n      <button class=\"btn\" onclick=\"saveDish('${course}')\">${isEdit?'Änderungen speichern':'Speichern'}</button>\n      ${isEdit?'<button class=\"btn secondary\" onclick=\"resetForm();renderDishes(\\''+course+'\\')\">Abbrechen</button>':''}\n    </div>\n  </div>\n  <div class=\"card\">\n    <h2>🏷️ Kategorien verwalten</h2>\n    ${cats.map((c,i)=>`\n      <div class=\"catrow\">\n        <span class=\"catdot\" style=\"background:${c.color}\" onclick=\"cycleColor(${i})\"></span>\n        <span style=\"flex:1;font-size:.95rem\">${c.icon} ${esc(c.label)}</span>\n        <button class=\"iconbtn\" title=\"Umbenennen / Symbol\" onclick=\"editCat(${i})\">✏️</button>\n        <button class=\"iconbtn\" title=\"Löschen\" onclick=\"delCat(${i})\">🗑</button>\n      </div>`).join('')}\n    <div class=\"actions\"><button class=\"btn secondary\" onclick=\"addCat()\">＋ Kategorie hinzufügen</button></div>\n  </div>\n  <div class=\"card\">\n    <h2>📋 ${COURSES[course]}e (${list.length})</h2>\n    ${list.length===0?'<div class=\"empty\">Noch keine '+COURSES[course]+'e.</div>':list.map(d=>`\n      <div class=\"dish\">\n        <div style=\"flex:1\">\n          <div class=\"name\">${esc(d.name)}</div>\n          <div class=\"tags\">\n            ${d.cats.map(catChip).join('')}\n            ${d.monthly?'<span class=\"tag\" style=\"background:#fff8e1;color:#b58900\">⭐ monatlich</span>':''}\n            ${d.fresh?'<span class=\"tag\" style=\"background:#e3f2fd;color:#1565c0\">🐟 frisch</span>':''}\n            ${d.effort===3?'<span class=\"tag\" style=\"background:#fbe9e7;color:#bf360c\">aufwendig</span>':''}\n          </div>\n        </div>\n        <button class=\"iconbtn\" title=\"Bearbeiten\" onclick=\"editDish(${d.id})\">✏️</button>\n        <button class=\"iconbtn\" title=\"Auf die Liste „Nicht mehr\"\" onclick=\"archiveDish(${d.id})\">📦</button>\n        <button class=\"iconbtn\" title=\"Löschen\" onclick=\"delDish(${d.id})\">🗑</button>\n      </div>`).join('')}\n  </div>`;\n}\nfunction toggleCat(id){ syncName(); const i=form.cats.indexOf(id); if(i>=0) form.cats.splice(i,1); else form.cats.push(id); renderDishes(currentDishCourse()); }\nfunction currentDishCourse(){ return ['suppe','vorspeise','haupt'].includes(tab)?tab:'haupt'; }\nfunction saveDish(course){\n  form.name = document.getElementById('dishName').value.trim();\n  if(!form.name){ alert('Bitte einen Namen eingeben oder ansagen.'); return; }\n  if(editId!==null){ const d = dishes.find(x=>x.id===editId); Object.assign(d, { name:form.name, nameLb:form.nameLb||'', cats:[...form.cats], monthly:form.monthly, fresh:form.fresh, effort:form.effort }); }\n  else dishes.push({ id:Date.now(), course, name:form.name, nameLb:form.nameLb||'', cats:[...form.cats], monthly:form.monthly, fresh:form.fresh, effort:form.effort });\n  resetForm(); saveAll(); renderDishes(course);\n}\nfunction editDish(id){ const d = dishes.find(x=>x.id===id); editId=id; form={ name:d.name, nameLb:d.nameLb||'', cats:[...d.cats], monthly:d.monthly, fresh:d.fresh, effort:d.effort }; renderDishes(d.course); window.scrollTo({top:0,behavior:'smooth'}); }\nfunction delDish(id){ const d=dishes.find(x=>x.id===id); if(confirm('„'+d.name+'\" wirklich endgültig löschen?')){ dishes=dishes.filter(x=>x.id!==id); saveAll(); renderDishes(currentDishCourse()); } }\n// ---------- Tab: Kombis (Protein + Feculon + Gemüse) ----------\nconst PART_KINDS = { protein:'🥩 Proteine', feculon:'🍚 Beilagen (Feculon)', gemuese:'🥦 Gemüse' };\nfunction renderKombis(){\n  const row = (k)=> (parts[k]||[]).map(p=>`\n    <div class=\"dish\">\n      <div style=\"flex:1\">\n        <div class=\"name\">${esc(p.name)}</div>\n        <div class=\"chiprow\" style=\"flex-wrap:wrap;gap:6px\">${cats.map(c=>`<span class=\"chip ${p.cats.includes(c.id)?'on':''}\" style=\"${p.cats.includes(c.id)?'background:'+c.color+';border-color:'+c.color:''}\" onclick=\"togglePartCat('${k}',${p.id},'${c.id}')\">${c.icon} ${esc(c.label)}</span>`).join('')}</div>\n      </div>\n      <button class=\"iconbtn\" title=\"Umbenennen\" onclick=\"editPart('${k}',${p.id})\">✏️</button>\n      <button class=\"iconbtn\" title=\"Löschen\" onclick=\"delPart('${k}',${p.id})\">🗑</button>\n    </div>`).join('');\n  app.innerHTML = `\n  <div class=\"card\"><h2>🧩 Kombi-Gerichte</h2>\n  <div class=\"hint\">Aus diesen Listen würfelt der Planer freie Hauptgerichte zusammen: <b>Protein + Beilage + Gemüse</b> (z. B. „Hühnergeschnetzeltes mit Reis & Brokkoli\"). Das passiert nur für Tage, die durch Komplettgerichte nicht besetzt sind – und nur, wenn es hier Einträge gibt. Regeln werden beachtet: Kategorien zählen gemeinsam (Huhn mit Reis verbraucht Huhn UND Reis), kein Element kommt zweimal in derselben Woche vor. Komplettgerichte (Pizza, Lasagne, Spaghetti …) bleiben im Tab „Hauptgericht\".</div></div>\n  ${Object.entries(PART_KINDS).map(([k,label])=>`\n  <div class=\"card\"><h2>${label} (${(parts[k]||[]).length})</h2>\n    <div class=\"actions\"><button class=\"btn secondary\" onclick=\"addPart('${k}')\">＋ Hinzufügen</button></div>\n    ${(parts[k]||[]).length ? row(k) : '<div class=\"empty\">Noch keine Einträge.</div>'}\n  </div>`).join('')}`;\n}\nfunction addPart(k){ const name = prompt('Name:'); if(!name) return; const lb = prompt('Name op Lëtzebuergesch (facultativ):','')||''; (parts[k]=parts[k]||[]).push({ id:Date.now(), name:name.trim(), nameLb:lb.trim(), cats:[] }); saveAll(); renderKombis(); }\nfunction editPart(k,id){ const p=(parts[k]||[]).find(x=>x.id===id); const name=prompt('Neuer Name:', p.name); if(name===null) return; const lb=prompt('Name op Lëtzebuergesch (facultativ):', p.nameLb||''); if(lb===null) return; p.name=name.trim(); p.nameLb=lb.trim(); saveAll(); renderKombis(); }\nfunction togglePartCat(k,id,cid){ const p=(parts[k]||[]).find(x=>x.id===id); p.cats = p.cats.includes(cid) ? p.cats.filter(x=>x!==cid) : [...p.cats,cid]; saveAll(); renderKombis(); }\nfunction delPart(k,id){ const p=(parts[k]||[]).find(x=>x.id===id); if(confirm('„'+p.name+'\" wirklich löschen?')){ parts[k]=parts[k].filter(x=>x.id!==id); saveAll(); renderKombis(); } }\n// ---------- Tab: Nicht mehr (Archiv) ----------\nfunction archiveDish(id){\n  const d = dishes.find(x=>x.id===id);\n  const note = prompt('Warum soll „'+d.name+'\" auf die Liste „Nicht mehr\"?\\n(z. B. Kinder mögen es nicht / zu aufwendig / andere Bemerkung – kann auch leer bleiben)', d.note||'');\n  if(note===null) return;\n  d.archived = true; d.note = note.trim(); saveAll(); renderDishes(currentDishCourse());\n}\nfunction restoreDish(id){ const d=dishes.find(x=>x.id===id); d.archived=false; saveAll(); renderArchiv(); }\nfunction editNote(id){ const d=dishes.find(x=>x.id===id); const note=prompt('Bemerkung für „'+d.name+'\":', d.note||''); if(note===null) return; d.note=note.trim(); saveAll(); renderArchiv(); }\nfunction renderArchiv(){\n  const arch = dishes.filter(d=>d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));\n  const section = (course)=>arch.filter(d=>d.course===course).map(d=>`\n      <div class=\"dish\">\n        <div style=\"flex:1\">\n          <div class=\"name\" style=\"color:#607d8b\">${esc(d.name)}</div>\n          <div class=\"tags\">${d.cats.map(catChip).join('')}\n            ${d.note?`<span class=\"tag\" style=\"background:#fff3e0;color:#e65100\">💬 ${esc(d.note)}</span>`:'<span class=\"tag\" style=\"background:#eceff1;color:#90a4ae\">💬 keine Bemerkung</span>'}\n          </div>\n        </div>\n        <button class=\"iconbtn\" title=\"Bemerkung ändern\" onclick=\"editNote(${d.id})\">💬</button>\n        <button class=\"iconbtn\" title=\"Zurück in die Menüplanung\" onclick=\"restoreDish(${d.id})\">↩️</button>\n        <button class=\"iconbtn\" title=\"Endgültig löschen\" onclick=\"delArch(${d.id})\">🗑</button>\n      </div>`).join('');\n  app.innerHTML = `\n  <div class=\"card\">\n    <h2>📦 Nicht mehr – Archiv (${arch.length})</h2>\n    <div class=\"hint\">Hier stehen alle Suppen, Vorspeisen und Hauptgerichte, die du nicht mehr machen möchtest. Sie werden bei der Menüplanung ignoriert. Mit der Bemerkung 💬 hältst du fest, warum (z. B. Kinder mögen es nicht, zu aufwendig …). Mit ↩️ holst du sie jederzeit zurück.</div>\n  </div>\n  ${(['suppe','vorspeise','haupt']).map(c=>arch.some(d=>d.course===c)?`\n  <div class=\"card\"><h2>${COURSES[c]}e (${arch.filter(d=>d.course===c).length})</h2>${section(c)}</div>`:'').join('')}\n  ${arch.length===0?'<div class=\"empty\">Noch nichts archiviert. In den Listen Suppe / Vorspeise / Hauptgericht auf 📦 tippen, um ein Gericht hierher zu verschieben.</div>':''}`;\n}\nfunction delArch(id){ const d=dishes.find(x=>x.id===id); if(confirm('„'+d.name+'\" endgültig aus dem Archiv löschen?')){ dishes=dishes.filter(x=>x.id!==id); saveAll(); renderArchiv(); } }\n// ---------- Tab: Monatlich (⭐) ----------\nfunction renderMonthly(){\n  const mon = dishes.filter(d=>d.monthly && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));\n  const row = (d)=>`\n      <div class=\"dish\">\n        <div style=\"flex:1\">\n          <div class=\"name\">${esc(d.name)}</div>\n          <div class=\"tags\">\n            <span class=\"tag\" style=\"background:#e8eaf6;color:#3949ab\">${COURSES[d.course]}</span>\n            ${d.cats.map(catChip).join('')}\n            ${d.fresh?'<span class=\"tag\" style=\"background:#e3f2fd;color:#1565c0\">🐟 frisch</span>':''}\n            ${d.effort===3?'<span class=\"tag\" style=\"background:#fbe9e7;color:#bf360c\">aufwendig</span>':''}\n          </div>\n        </div>\n        <button class=\"iconbtn\" title=\"Bearbeiten\" onclick=\"editDish(${d.id})\">✏️</button>\n        <button class=\"iconbtn\" title=\"Auf die Liste „Nicht mehr\"\" onclick=\"archiveDish(${d.id})\">📦</button>\n        <button class=\"iconbtn\" title=\"Löschen\" onclick=\"delDish(${d.id})\">🗑</button>\n      </div>`;\n  const byCourse = (c)=>mon.filter(d=>d.course===c);\n  // Max. mögliche ⭐-Gerichte pro Monat: ~21 Werktage minus fest verplante Wochentage (z. B. Freitags-Gemüsesuppe)\n  const monthMax = (c)=>{\n    const forced = new Set();\n    for(const r of rules) if(r.course===c && r.type==='dishDay' && Array.isArray(r.params.days)) r.params.days.forEach(x=>forced.add(x));\n    return Math.max(0, 21 - Math.round(forced.size*4.34));\n  };\n  const counterRow = ['suppe','vorspeise','haupt'].map(c=>{\n    const n = byCourse(c).length, max = monthMax(c);\n    const col = n>max ? '#c62828' : (n>=max-2 ? '#e65100' : '#2e7d32');\n    const ic = n>max ? '🚫' : (n>=max-2 ? '⚠️' : '✅');\n    return `<span class=\"tag\" style=\"background:${col}1a;color:${col};font-size:.95rem;padding:6px 12px\">${ic} ${COURSES[c]}e: ${n} / ${max}</span>`;\n  }).join(' ');\n  app.innerHTML = `\n  <div class=\"card\">\n    <h2>⭐ Einmal pro Monat (${mon.length})</h2>\n    <div class=\"hint\">Alle Suppen, Vorspeisen und Hauptgerichte mit dem ⭐-Kennzeichen auf einen Blick. Der Planer setzt sie automatisch ungefähr einmal pro Monat ein (Regel „Monatsgericht\" im Regeln-Tab anpassbar). Verwaltet (⭐ setzen/entfernen) werden sie in ihren eigenen Listen.</div>\n  </div>\n  <div class=\"card\">\n    <h3>📊 ⭐-Zähler (vorhanden / maximal möglich)</h3>\n    <div class=\"chiprow\" style=\"flex-wrap:wrap;gap:6px\">${counterRow}</div>\n    <div class=\"hint\">Ein Monat hat rund 21 Werktage pro Ebene. Fest verplante Tage (z. B. Freitags-Gemüsesuppe) werden abgezogen. Bei ✅ ist entspannt, bei ⚠️ wird's eng, bei 🚫 passt nicht mehr jedes ⭐-Gericht in jeden Monat.</div>\n  </div>\n  ${['suppe','vorspeise','haupt'].map(c=>byCourse(c).length?`\n  <div class=\"card\"><h2>${COURSES[c]}e (${byCourse(c).length})</h2>${byCourse(c).map(row).join('')}</div>`:'').join('')}\n  ${mon.length===0?'<div class=\"empty\">Noch keine Monatsgerichte markiert. In den Listen Suppe / Vorspeise / Hauptgericht beim Gericht ✏️ wählen und dort „⭐ 1× pro Monat\" einschalten.</div>':''}`;\n}\nfunction addCat(){ const label = prompt('Name der neuen Kategorie:'); if(!label) return;\n  const icon = prompt('Symbol (Emoji) für die Kategorie:', '🍽️')||'🍽️';\n  cats.push({ id:'c'+Date.now(), label:label.trim(), icon, color:PALETTE[cats.length%PALETTE.length] }); saveAll(); renderDishes(currentDishCourse()); }\nfunction editCat(i){ const c=cats[i]; const label=prompt('Neuer Name:', c.label); if(label===null) return; const icon=prompt('Symbol (Emoji):', c.icon); if(icon===null) return; c.label=label.trim(); c.icon=icon; saveAll(); renderDishes(currentDishCourse()); }\nfunction cycleColor(i){ cats[i].color = PALETTE[(PALETTE.indexOf(cats[i].color)+1)%PALETTE.length]; saveAll(); renderDishes(currentDishCourse()); }\nfunction delCat(i){ const c=cats[i]; const used=dishes.filter(d=>d.cats.includes(c.id));\n  if(!confirm('Kategorie „'+c.label+'\" löschen? Sie wird von '+used.length+' Gericht(en) entfernt.')) return;\n  cats.splice(i,1); dishes.forEach(d=>d.cats=d.cats.filter(x=>x!==c.id)); saveAll(); renderDishes(currentDishCourse()); }\n\n// ---------- Tab: Plan ----------\nfunction getDish(course, w, day){ const pc = plan && plan.find(p=>p.course===course); return pc ? pc.days[w*5+day] : null; }\nfunction dishName(d){\n  if(planLang==='lb' && d){ const lb = d.nameLb || LB_NAMES[d.name]; if(lb) return lb; }\n  return d ? d.name : '—';\n}\nfunction renderPlan(){\n  const dn = planLang==='lb'?DAYNAMES_LB:DAYNAMES;\n  const dnShort = (i)=> dn[i].slice(0, planLang==='lb'?3:2);\n  const ICONS = { suppe:'🍲', vorspeise:'🥗', haupt:'🍽️' };\n  app.innerHTML = `\n  <div class=\"card noprint\">\n    <h2>🗓️ Wochenplan – 3 Monate (13 Wochen)</h2>\n    <div class=\"hint\">Der Plan wählt ausschließlich aus deinen eigenen Gerichten. Regeln siehe Tab „Regeln\".</div>\n    <div class=\"actions\">\n      <button class=\"btn\" onclick=\"generatePlan()\">Plan neu erstellen</button>\n      <button class=\"btn secondary\" onclick=\"clearPlan()\">Leeren</button>\n    </div>\n    <div class=\"actions\">\n      <button class=\"btn secondary\" onclick=\"setLang('de')\">Deutsch 🇩🇪</button>\n      <button class=\"btn secondary\" onclick=\"setLang('lb')\">Lëtzebuergesch 🇱🇺</button>\n      <button class=\"btn secondary\" onclick=\"window.print()\">🖨️ Ausdrucken</button>\n    </div>\n  </div>\n  ${!plan ? '<div class=\"empty\">Noch kein Plan erstellt.</div>' : Array.from({length:13},(_,w)=>`\n    <div class=\"card\">\n      <h2 style=\"color:#2e7d32\">${planLang==='lb'?'Woch':'Woche'} ${w+1}</h2>\n      ${DAYNAMES.map((_,day)=>{\n        const s = getDish('suppe',w,day), v = getDish('vorspeise',w,day), h = getDish('haupt',w,day);\n        return `<div class=\"daycard\">\n          <div class=\"dname\">${dnShort(day)}</div>\n          <div style=\"flex:1\">\n            <div class=\"dline\"><span class=\"dic\">${ICONS.suppe}</span><span>${s?esc(dishName(s)): '—'}${s&&s.monthly?' ⭐':''}</span></div>\n            <div class=\"dline\"><span class=\"dic\">${ICONS.vorspeise}</span><span>${v?esc(dishName(v)): '—'}${v&&v.monthly?' ⭐':''}</span></div>\n            <div class=\"dline\"><span class=\"dic\">${ICONS.haupt}</span><span>${h?esc(dishName(h)): '—'}${h&&h.monthly?' ⭐':''}</span></div>\n          </div>\n        </div>`;\n      }).join('')}\n    </div>`).join('')}\n  ${plan?'<div class=\"legend noprint\">Tipp: Leere Stellen bedeuten, dass die Regeln kein passendes Gericht zulassen – Gerichte ergänzen oder Regeln anpassen. Mit ✏️ kannst du einzelne Wochen nicht ändern – der Plan wird immer komplett neu erstellt.</div>':''}`;\n}\nfunction setLang(l){ planLang=l; saveAll(); renderPlan(); }\nfunction clearPlan(){ plan=null; saveAll(); renderPlan(); }\n\n// ---------- Tab: Regeln ----------\nlet addType = 'catWeek';\nfunction renderRules(){\n  const section = (course)=>`\n    <div class=\"card\">\n      <h2>📏 Regeln – ${COURSES[course]}</h2>\n      ${rules.filter(r=>r.course===course).map(r=>ruleRow(r)).join('') || '<div class=\"empty\">Keine Regeln.</div>'}\n      <div class=\"actions\">\n        <select id=\"addtype-${course}\" style=\"margin:0\" onchange=\"addType=this.value\">\n          ${Object.entries(RULE_LABELS).map(([k,v])=>`<option value=\"${k}\" ${addType===k?'selected':''}>${v}</option>`).join('')}\n        </select>\n        <button class=\"btn secondary\" style=\"flex:none\" onclick=\"addRule('${course}')\">＋ Regel</button>\n      </div>\n    </div>`;\n  app.innerHTML = `<div class=\"card\"><h2>📏 Regeln verwalten</h2><div class=\"hint\">Regeln gelten pro Ebene (Suppe / Vorspeise / Hauptgericht). Änderungen werden sofort übernommen; beim Löschen wird nochmal nachgefragt.</div></div>`\n    + section('suppe') + section('vorspeise') + section('haupt');\n}\nfunction weekdaysPicker(id, sel){ return `<span class=\"weekday\" id=\"${id}\">${DAYNAMES.map((d,i)=>`<span class=\"chip ${sel.includes(i)?'on':''}\" onclick=\"this.classList.toggle('on')\">${d.slice(0,2)}</span>`).join('')}</span>`; }\nfunction ruleRow(r){\n  const p = r.params; let params = '';\n  if(r.type==='catWeek') params = `<label>Kategorie</label><select onchange=\"updRule('${r.id}','cat',this.value)\">${cats.map(c=>`<option value=\"${c.id}\" ${p.cat===c.id?'selected':''}>${c.icon} ${esc(c.label)}</option>`).join('')}</select>\n    <label>min/ Woche</label><input type=\"number\" value=\"${p.min}\" onchange=\"updRuleNum('${r.id}','min',this.value)\">\n    <label>max/ Woche</label><input type=\"number\" value=\"${p.max}\" onchange=\"updRuleNum('${r.id}','max',this.value)\">`;\n  else if(r.type==='monthly') params = `<label>max. pro Monat</label><input type=\"number\" value=\"${p.max}\" onchange=\"updRuleNum('${r.id}','max',this.value)\">`;\n  else if(r.type==='minGap') params = `<label>Wochen Abstand</label><input type=\"number\" value=\"${p.weeks}\" onchange=\"updRuleNum('${r.id}','weeks',this.value)\">`;\n  else if(r.type==='freshDays') params = `<label>Tage (Mo–Fr):</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class=\"btn secondary small\" onclick=\"readDays('${r.id}','freshDays')\">OK</button>`;\n  else if(r.type==='effortDays') params = `<label>Aufwand</label><select onchange=\"updRuleNum('${r.id}','effort',this.value)\"><option value=\"1\" ${p.effort==1?'selected':''}>wenig</option><option value=\"2\" ${p.effort==2?'selected':''}>mittel</option><option value=\"3\" ${p.effort==3?'selected':''}>viel</option></select>\n    <label>Tage:</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class=\"btn secondary small\" onclick=\"readDays('${r.id}','effortDays')\">OK</button>`;\n  else if(r.type==='perWeek') params = `<label>max. pro Woche</label><input type=\"number\" value=\"${p.max}\" onchange=\"updRuleNum('${r.id}','max',this.value)\">`;\n  else if(r.type==='monthlyMust') params = `<label>max. ⭐ pro Woche</label><input type=\"number\" value=\"${p.perWeek||1}\" onchange=\"updRuleNum('${r.id}','perWeek',this.value)\">`;\n  else if(r.type==='sameVegWeek') params = `<label>max. pro Woche</label><input type=\"number\" value=\"${p.max}\" onchange=\"updRuleNum('${r.id}','max',this.value)\">`;\n  else if(r.type==='courseDepEffort') params = `<label>Nur wenn</label><select onchange=\"updRule('${r.id}','course',this.value)\">${Object.keys(COURSES).map(k=>`<option value=\"${k}\" ${p.course===k?'selected':''}>${COURSES[k]}</option>`).join('')}</select>\n    <label>Aufwand max.</label><select onchange=\"updRuleNum('${r.id}','effortMax',this.value)\"><option value=\"1\" ${p.effortMax==1?'selected':''}>wenig</option><option value=\"2\" ${p.effortMax==2?'selected':''}>mittel</option></select>`;\n  else if(r.type==='dishDay') params = `<label>Gericht</label><select onchange=\"updRule('${r.id}','name',this.value)\">${dishes.filter(x=>x.course===r.course && !x.archived).map(x=>`<option value=\"${esc(x.name)}\" ${p.name===x.name?'selected':''}>${esc(x.name)}</option>`).join('')}</select>\n    <label>Tage (Mo–Fr):</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class=\"btn secondary small\" onclick=\"readDays('${r.id}','dishDay')\">OK</button>`;\n  return `<div class=\"rule\"><div class=\"rtop\"><span class=\"rlabel\">${RULE_LABELS[r.type]}</span>\n    <button class=\"iconbtn\" title=\"Löschen\" onclick=\"delRule('${r.id}')\">🗑</button></div><div class=\"params\">${params}</div></div>`;\n}\nfunction updRule(id,k,v){ rules.find(r=>r.id===id).params[k]=v; saveAll(); }\nfunction updRuleNum(id,k,v){ updRule(id,k, parseInt(v)||0); }\nfunction readDays(id){ const chips=[...document.getElementById('wd-'+id).querySelectorAll('.chip')]; rules.find(r=>r.id===id).params.days = chips.map((c,i)=>c.classList.contains('on')?i:-1).filter(i=>i>=0); saveAll(); }\nfunction addRule(course){\n  const type = document.getElementById('addtype-'+course).value;\n  const base = { id:'r'+Date.now(), course, type };\n  if(type==='catWeek') base.params={ cat:(cats[0]||{}).id||'', min:1, max:1 };\n  else if(type==='monthly') base.params={ max:1 };\n  else if(type==='minGap') base.params={ weeks:4 };\n  else if(type==='freshDays') base.params={ days:[2,3,4] };\n  else if(type==='effortDays') base.params={ effort:3, days:[3,4] };\n  else if(type==='perWeek') base.params={ max:2 };\n  else if(type==='courseDepEffort') base.params={ course:'haupt', effortMax:2 };\n  else if(type==='dishDay') base.params={ name:(dishes.filter(x=>x.course===course && !x.archived)[0]||{}).name||'', days:[4] };\n  else if(type==='monthlyMust') base.params={ perWeek:1 };\n  else if(type==='sameVegWeek') base.params={ max:1 };\n  rules.push(base); saveAll(); renderRules();\n}\nfunction delRule(id){ const r=rules.find(x=>x.id===id); if(!confirm('Regel „'+RULE_LABELS[r.type]+'\" wirklich löschen?')) return; rules=rules.filter(x=>x.id!==id); saveAll(); renderRules(); }\n\n// ---------- Tab: Sicherung ----------\nfunction renderBackup(){\n  app.innerHTML = `\n  <div class=\"card\">\n    <h2>💾 Sicherheitskopie</h2>\n    <div class=\"hint\">Wie bei der Crèche-Küchenhelfer-App: Alle Daten (Kategorien, ${['suppe','vorspeise','haupt'].map(c=>COURSES[c]+'e').join(', ')}, Regeln) als Datei sichern und wiederherstellen. Der erstellte Plan wird mitgesichert.</div>\n    <div class=\"actions\"><button class=\"btn\" onclick=\"exportBackup()\">⬇️ Sicherung exportieren</button></div>\n    <div class=\"actions\"><button class=\"btn secondary\" onclick=\"document.getElementById('impfile').click()\">⬆️ Sicherung importieren</button></div>\n    <input type=\"file\" id=\"impfile\" accept=\".json\" style=\"display:none\" onchange=\"importBackup(this)\">\n    <h3>📋 Datenbestand</h3>\n    <div class=\"hint\">Kategorien: ${cats.length} · Suppen: ${dishes.filter(d=>d.course==='suppe'&&!d.archived).length} · Vorspeisen: ${dishes.filter(d=>d.course==='vorspeise'&&!d.archived).length} · Hauptgerichte: ${dishes.filter(d=>d.course==='haupt'&&!d.archived).length} · Archiv „Nicht mehr\": ${dishes.filter(d=>d.archived).length} · Regeln: ${rules.length}</div>\n    <h3>⚠️ Zurücksetzen</h3>\n    <div class=\"actions\"><button class=\"btn secondary\" onclick=\"resetAll()\">Alles löschen & zurücksetzen</button></div>\n  </div>`;\n}\nfunction exportBackup(){\n  const data = JSON.stringify({ version:VERSION, exported:new Date().toISOString(), cats, dishes, rules, parts, plan }, null, 2);\n  try {\n    const a = document.createElement('a');\n    a.href = URL.createObjectURL(new Blob([data], {type:'application/json'}));\n    a.download = 'menue-planer-sicherung-v'+VERSION+'.json'; a.click();\n  } catch(e){ alert('Download in dieser Vorschau blockiert – in der App/PWA funktioniert er. Alternativ:\\n\\n'+data.slice(0,2000)); }\n}\nfunction importBackup(input){\n  const f = input.files[0]; if(!f) return;\n  const rd = new FileReader();\n  rd.onload = ()=>{ try {\n    const d = JSON.parse(rd.result);\n    if(!confirm('Sicherung importieren? Aktuelle Daten werden ersetzt.')) return;\n    if(d.cats) cats=d.cats; if(d.dishes) dishes=d.dishes; if(d.rules) rules=d.rules; if(d.parts) parts=d.parts; plan=d.plan||null;\n    saveAll(); alert('Import erfolgreich ✓'); render();\n  } catch(e){ alert('Datei konnte nicht gelesen werden.'); } };\n  rd.readAsText(f);\n}\nfunction resetAll(){ if(confirm('Wirklich ALLE Daten löschen und auf Standard zurücksetzen?')){ localStorage.removeItem('mp_cats'); localStorage.removeItem('mp_dishes'); localStorage.removeItem('mp_rules'); localStorage.removeItem('mp_parts'); localStorage.removeItem('mp_plan'); loadAll(); render(); } }\n\nloadAll();\nrender();\n</script>\n<script>\n  if('serviceWorker' in navigator){\n    navigator.serviceWorker.register('sw.js').then(reg=>{\n      reg.addEventListener('updatefound', ()=>{ const nw = reg.installing; if(nw) nw.addEventListener('statechange', ()=>{ if(nw.state==='installed' && navigator.serviceWorker.controller){ nw.postMessage({type:'SKIP_WAITING'}); } }); });\n    });\n    let refreshing = false;\n    navigator.serviceWorker.addEventListener('controllerchange', ()=>{ if(!refreshing){ refreshing = true; location.reload(); } });\n  }\n</script>\n</body>\n</html>\n"}}]
+
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menü Planer</title>
+<meta name="theme-color" content="#2e7d32" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Menü Planer" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<style>
+  :root { font-family: system-ui, sans-serif; background:#f4f6f8; color:#1b2733; margin:0; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding-bottom:100px; }
+  header { background:#2e7d32; color:#fff; padding:12px 14px; position:sticky; top:0; z-index:9; }
+  header h1 { margin:0; font-size:1.15rem; display:flex; justify-content:space-between; align-items:center; }
+  .version { font-size:.75rem; background:rgba(255,255,255,.25); padding:3px 10px; border-radius:999px; }
+  .menubtn { width:100%; margin-top:9px; padding:10px 12px; border:none; border-radius:8px; background:rgba(255,255,255,.18); color:#fff; font-weight:600; font-size:.95rem; cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; }
+  .menubtn .arr { font-size:.8rem; transition:transform .2s; display:inline-block; }
+  nav { display:none; flex-direction:column; gap:4px; margin-top:6px; }
+  nav.open { display:flex; }
+  nav button { padding:11px 12px; border:none; border-radius:8px; background:rgba(255,255,255,.12); color:#fff; font-weight:600; cursor:pointer; text-align:left; font-size:.95rem; }
+  nav button.active { background:#fff; color:#2e7d32; }
+  .navgroup { font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; color:rgba(255,255,255,.65); padding:8px 4px 2px; font-weight:700; }
+  main { padding:14px; max-width:760px; margin:0 auto; }
+  .card { background:#fff; border-radius:12px; padding:14px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  h2 { margin:4px 0 10px; font-size:1.05rem; }
+  h3 { margin:14px 0 6px; font-size:.95rem; color:#455a64; }
+  input[type=text], select { width:100%; padding:9px; border:1.5px solid #cfd8dc; border-radius:8px; font-size:1rem; margin-bottom:8px; }
+  input[type=number] { width:4.2em; padding:6px; border:1.5px solid #cfd8dc; border-radius:6px; font-size:.9rem; }
+  .chiprow { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px; }
+  .chip { padding:6px 12px; border-radius:999px; border:1.5px solid #cfd8dc; background:#fff; font-size:.85rem; cursor:pointer; user-select:none; }
+  .chip.on { background:#2e7d32; border-color:#2e7d32; color:#fff; }
+  .btn { background:#2e7d32; color:#fff; border:none; border-radius:8px; padding:11px 16px; font-size:1rem; font-weight:600; cursor:pointer; width:100%; }
+  .btn.secondary { background:#e8f0e9; color:#2e7d32; }
+  .btn.rec { background:#c62828; }
+  .btn.small { width:auto; padding:6px 10px; font-size:.85rem; }
+  .dish { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:9px 6px; border-bottom:1px solid #eceff1; }
+  .dish:last-child { border-bottom:none; }
+  .dish .name { font-weight:600; font-size:.95rem; }
+  .tags { font-size:.72rem; margin-top:3px; display:flex; flex-wrap:wrap; gap:4px; }
+  .tag { padding:2px 8px; border-radius:999px; }
+  .iconbtn { border:none; background:none; font-size:1.05rem; cursor:pointer; padding:2px 4px; }
+  .day { display:flex; gap:10px; padding:8px 10px; border-radius:8px; background:#fff; margin-bottom:5px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .day .dname { width:3.4em; font-weight:700; color:#2e7d32; flex:none; font-size:.85rem; }
+  .day .ddish { flex:1; font-size:.92rem; }
+  .day .dsub { font-size:.72rem; color:#78909c; }
+  .daycard { display:flex; gap:8px; padding:8px 10px; border-radius:8px; background:#fff; margin-bottom:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); page-break-inside:avoid; }
+  .daycard .dname { width:4.6em; flex:none; font-weight:700; color:#2e7d32; font-size:.85rem; padding-top:1px; }
+  .dline { font-size:.9rem; padding:1px 0; display:flex; gap:6px; }
+  .dline .dic { flex:none; width:1.3em; text-align:center; }
+  .hint { font-size:.8rem; color:#78909c; margin:4px 0 10px; }
+  .empty { text-align:center; color:#90a4ae; padding:20px 8px; font-size:.95rem; }
+  .legend { font-size:.78rem; color:#546e7a; margin-top:8px; }
+  .actions { display:flex; gap:8px; margin-top:8px; }
+  .actions .btn { flex:1; }
+  .catrow { display:flex; align-items:center; gap:8px; padding:7px 4px; border-bottom:1px solid #eceff1; }
+  .catrow:last-child { border-bottom:none; }
+  .catdot { width:14px; height:14px; border-radius:50%; flex:none; }
+  .rule { background:#fafbfc; border:1px solid #eceff1; border-radius:8px; padding:9px 10px; margin-bottom:7px; font-size:.88rem; }
+  #warnbox { position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50; padding:16px; }
+  #warnbox .card { max-width:500px; width:100%; max-height:80vh; overflow:auto; margin:0; }
+  #warnbox .witem { text-align:left; font-size:.9rem; padding:7px 0; border-bottom:1px solid #eceff1; }
+  .rule .rtop { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:5px; }
+  .rule .rlabel { font-weight:600; }
+  .rule .params { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .weekday { display:inline-flex; gap:4px; }
+  .weekday .chip { padding:3px 8px; font-size:.75rem; }
+  .collapsible summary { cursor:pointer; font-weight:600; color:#2e7d32; padding:4px 0; }
+  @media print {
+    header, nav, .menubtn, .noprint, .btn, .hint, .legend { display:none !important; }
+    body { padding:0; background:#fff; }
+    .card { box-shadow:none; border:none; padding:0; margin-bottom:6px; page-break-inside:avoid; }
+    .day { box-shadow:none; border-bottom:1px solid #ddd; border-radius:0; }
+    main { padding:0; max-width:none; }
+    body.rtl div[lang=lb] { display:block; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🍽️ Menü Planer <span class="version" id="ver">v1.7.0</span></h1>
+  <button class="menubtn" id="menubtn" onclick="toggleMenu()" aria-expanded="false">☰ Menü <span class="arr" id="menuarr">▾</span></button>
+  <nav id="mainnav">
+    <div class="navgroup">Gerichte</div>
+    <button id="tab-suppe">🍲 Suppe</button>
+    <button id="tab-vorspeise">🥗 Vorspeise</button>
+    <button id="tab-haupt" class="active">🍽️ Hauptgericht</button>
+    <div class="navgroup">Listen</div>
+    <button id="tab-kombis">🧩 Kombis</button>
+    <button id="tab-monatlich">⭐ Monatlich</button>
+    <button id="tab-archiv">📦 Nicht mehr</button>
+    <div class="navgroup">Plan &amp; Einstellungen</div>
+    <button id="tab-plan">🗓️ Plan</button>
+    <button id="tab-regeln">📏 Regeln</button>
+    <button id="tab-sicherung">💾 Sicherung</button>
+  </nav>
+</header>
+<main id="app"></main>
+
+<script>
+const VERSION = '1.7.0';
+const COURSES = { suppe:'Suppe', vorspeise:'Vorspeise', haupt:'Hauptgericht' };
+const COURSES_LB = { suppe:'Zopp', vorspeise:'Entrée', haupt:'Haaptplat' };
+const DAYNAMES = ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'];
+const DAYNAMES_LB = ['Méindeg','Dënschdeg','Mëttwoch','Donneschdeg','Freideg'];
+const PALETTE = ['#2e7d32','#1565c0','#e65100','#6a1b9a','#c62828','#00838f','#b71c1c','#5d4037','#455a64','#ad1457','#283593','#558b2f'];
+
+// ---------- Standard-Daten ----------
+const DEFAULT_CATS = [
+  { id:'nudeln', label:'Nudeln', icon:'🍝', color:'#ad1457' },
+  { id:'rind',   label:'Rind',   icon:'🐄', color:'#c62828' },
+  { id:'huhn',   label:'Huhn',   icon:'🐔', color:'#e65100' },
+  { id:'fisch',  label:'Fisch',  icon:'🐟', color:'#1565c0' },
+  { id:'veg',    label:'Vegetarisch', icon:'🥕', color:'#558b2f' },
+  { id:'kartoffeln', label:'Kartoffeln', icon:'🥔', color:'#b71c1c' },
+  { id:'wurst',  label:'Wurst & Fleischwaren', icon:'🥓', color:'#5d4037' },
+];
+// Vorbefüllt aus Stefans Word-Menüplänen (Aug 2025 – Jan 2026, 21 Wochen)
+const S = (name,extra)=>({ course:'suppe', name, cats:['veg'], monthly:false, fresh:false, effort:1, ...extra });
+const H = (name,cats,extra)=>({ course:'haupt', name, cats, monthly:false, fresh:false, effort:2, ...extra });
+const V = (name,extra)=>({ course:'vorspeise', name, cats:['veg'], monthly:false, fresh:false, effort:1, ...extra });
+const STARTER_DISHES = [
+  // ---- Suppen ----
+  S('Gemüsesuppe'), S('Tomatensuppe'), S('Kürbissuppe'), S('Lauchsuppe'),
+  S('Blumenkohlsuppe'), S('Brokkolisuppe'), S('Selleriesuppe'), S('Kohlrabisuppe'),
+  S('Karottensuppe'), S('Topinambursuppe'), S('Kartoffelsuppe'),
+  S('Paprika-Karotten-Suppe'), S('Erbsensuppe'), S('Süßkartoffel-Karotten-Suppe'),
+  S('Kürbis-Süßkartoffel-Suppe'), S('Pastinakensuppe'), S('Spinatsuppe'),
+  S('Bohnensuppe mit Kartoffeln'), S('Fenchelsuppe'), S('Erbsen-Kartoffel-Suppe'),
+  S('Kürbis-Lauch-Suppe'), S('Karotten-Sellerie-Suppe'),
+  S('Kartoffel-Kohlrabi-Suppe'), S('Butternut-Kürbissuppe'), S('Romanescosuppe'),
+  S('Sellerie-Schwarzwurzel-Suppe'), S('Paprika-Tomaten-Suppe mit Frischkäse'),
+  S('Lauch-Kartoffel-Suppe'), S('Zucchinisuppe'), S('Zucchini-Sellerie-Suppe'),
+  S('Zucchini-Karotten-Suppe'),
+  // ---- Vorspeisen / Salate ----
+  V('Rohkostteller'), V('Rote-Bete-Salat'), V('Gefüllte Gurken'),
+  V('Mexikanischer Salat'), V('Tomate-Mozzarella'), V('Bohnensalat (Feierstengszalot)'),
+  V('Gemüsesticks mit Dip'), V('Gefüllte Eier'), V('Tomatensalat'),
+  V('Griechischer Salat'), V('Pizza-Schnecken'), V('Maiskörnersalat mit Ei'),
+  V('Karotten-Sellerie-Salat mit Apfel'), V('Linsensalat'),
+  V('Thunfisch-Reis-Salat',{cats:['fisch'],fresh:true}),
+  V('Rote-Linsen-Salat'), V('Salade Niçoise',{cats:['fisch'],fresh:true}),
+  V('Cracker mit Hummus'), V('Avocado-Joghurt-Dip mit Gemüse'),
+  V('Rote-Bete-Salat mit Feta & Kürbiskernen'), V('Bruschetta Italiana'),
+  V('Gemischter Salat'), V('Frühlingsrollen'),
+  V('Toast mit Ziegenkäse & Honig'),
+  V('Cracotte mit Thunfisch',{cats:['fisch'],fresh:true}),
+  V('Vitello Tonnato',{cats:['rind'],fresh:true}),
+  // ---- Hauptgerichte ----
+  H('Spaghetti Bolognese',['nudeln','rind'],{monthly:true,fresh:true}),
+  H('Lasagne Bolognese',['nudeln','rind'],{monthly:true,fresh:true,effort:3}),
+  H('Canneloni mit Fleischfüllung & Tomatensauce',['nudeln','rind'],{fresh:true,effort:3}),
+  H('Spaghetti Pomodoro mit Käse & Oliven',['nudeln','veg']),
+  H('Ravioli Pomodoro mit Gurkensalat',['nudeln','veg']),
+  H('Dinkelnudeln mit Provence-Sauce & Karotten-Mais-Salat',['nudeln','veg']),
+  H('Dinkelnudeln mit Gemüse & Käsesauce',['nudeln','veg']),
+  H('Spirelli Carbonara mit Gurkensalat & Feta',['nudeln']),
+  H('Tortellini mit Käsesauce & Cocktailtomaten',['nudeln','veg']),
+  H('Tortellini mit Spinat & Käsesauce',['nudeln','veg']),
+  H('Rindsgeschnetzeltes mit Nudeln & Karotten',['rind','nudeln']),
+  H('Gemüsepfanne mit Hähnchen & chinesischen Nudeln',['huhn','nudeln','veg']),
+  H('Putenbrust mit Spirelli, Erbsen & Karotten',['huhn','nudeln']),
+  H('Hähnchengeschnetzeltes mit Paprika, Zucchini & Couscous',['huhn']),
+  H('Hähnchengeschnetzeltes mit Couscous, Karotten & Erbsen',['huhn']),
+  H('Hähnchengeschnetzeltes mit Hirse & Romanesco',['huhn']),
+  H('Hähnchen mit Reis & Bohnensalat',['huhn']),
+  H('Hähnchenfilet mit Gemüsesauce, Vollkornreis & Brokkoli',['huhn']),
+  H('Hähnchen mit Kartoffeln & Karotten',['huhn','kartoffeln']),
+  H('Hähnchen mit Champignons, Pellkartoffeln & Gurkensalat',['huhn','kartoffeln']),
+  H('Hähnchenschnitzel mit Karotten & Vollkornreis',['huhn']),
+  H('Hähnchenfilet mit Couscous & Brokkoli',['huhn']),
+  H('Bouché à la Reine mit Reis, Erbsen & Karotten',['huhn']),
+  H('Putenschnitzel mit Dauphine-Kartoffeln & Karotten-Apfel-Salat',['huhn','kartoffeln']),
+  H('Putengeschnetzeltes mit Brokkoli & Hirse',['huhn']),
+  H('Chicken-Nuggets (hausgemacht) mit Kartoffelpüree, Erbsen & Karotten',['huhn','kartoffeln']),
+  H('Gebratener Reis mit Hähnchen & Gemüse',['huhn']),
+  H('Lachs mit Kartoffeln & Gurkensalat',['fisch','kartoffeln'],{fresh:true}),
+  H('Lachs auf Zucchinibett mit Basmatireis',['fisch'],{fresh:true}),
+  H('Lachs mit Couscous & Blumenkohl',['fisch'],{fresh:true}),
+  H('Lachs aus dem Ofen mit Vollkornreis & grünen Bohnen',['fisch'],{fresh:true}),
+  H('Lachs-Quiche mit Karotten-Sellerie-Salat',['fisch'],{fresh:true}),
+  H('Lachs mit Kartoffelpüree & Fenchel',['fisch','kartoffeln'],{fresh:true}),
+  H('Kabeljau aus dem Ofen mit Kürbis-Kartoffel-Püree',['fisch','kartoffeln'],{fresh:true}),
+  H('Kabeljau mit Vollkornreis & Ratatouille',['fisch'],{fresh:true}),
+  H('Kabeljau mit Blumenkohl & Ebly',['fisch'],{fresh:true}),
+  H('Kabeljau mit Lauchgemüse, Hirse & Karotten-Sellerie-Salat',['fisch'],{fresh:true}),
+  H('Kabeljau mit Couscous & Hokkaido-Creme',['fisch'],{fresh:true}),
+  H('Kabeljau mit Ofengemüse & Kartoffelpüree',['fisch','kartoffeln'],{fresh:true}),
+  H('Fisch mit Remoulade, Kartoffeln & grünem Salat',['fisch','kartoffeln'],{fresh:true}),
+  H('Fisch in der Folie mit Gemüse & Bulgur',['fisch'],{fresh:true}),
+  H('Fisch auf Gemüsebett mit Reis & Rote-Bete-Salat',['fisch'],{fresh:true}),
+  H('Duo vom Fisch auf Gemüsebett mit Vollkornreis',['fisch'],{fresh:true}),
+  H('Fischstäbchen mit Dillsauce, Vollkornreis & Gurkensalat',['fisch']),
+  H('Fish & Chips mit Gurkensalat',['fisch','kartoffeln']),
+  H('Fischbouletten mit Joghurt-Dip, Kürbis & Couscous',['fisch'],{fresh:true}),
+  H('Hamburger mit Pommes & grünem Salat',['rind']),
+  H('Mini-Hamburger mit Pommes & Salat',['rind']),
+  H('Rindfleisch-Bouletten mit Spätzle & Blumenkohl',['rind'],{fresh:true}),
+  H('Bouletten mit Kartoffelpüree & Kürbis',['rind','kartoffeln'],{fresh:true}),
+  H('Rindsbouletten mit Kartoffelpüree & Kürbisgemüse',['rind','kartoffeln'],{fresh:true}),
+  H('Rindsgeschnetzeltes mit Karotten-Kohlrabi-Gemüse & Bulgur',['rind']),
+  H('Rindsgeschnetzeltes mit Ratatouille & Reis',['rind']),
+  H('Rindsrouladen mit Rotkohl & Kartoffeln',['rind','kartoffeln'],{effort:3}),
+  H('Kalbsrouladen mit Champignons, Bulgur & Brokkoli',['rind'],{effort:3}),
+  H('Kalbsrouladen mit Reis & Brokkoli',['rind'],{effort:3}),
+  H('Kalbsragout mit Champignons, Spätzle & Gurkensalat',['rind']),
+  H('Kalbsschnitzel mit Pommes & Gurkensalat',['rind']),
+  H('Kalbsgeschnetzeltes Zürcher Art mit Reis',['rind']),
+  H('Kalbsfrikassee (Blanquette de veau) mit Reis, Erbsen & Karotten',['rind']),
+  H('Boeuf Bourguignon mit Pellkartoffeln',['rind','kartoffeln'],{effort:3}),
+  H('Gulasch mit Karotten & Spätzle',['rind'],{effort:3}),
+  H('Chili con Carne mit Vollkornreis & grünem Salat',['rind'],{fresh:true}),
+  H('Shepherd\'s Pie mit Gurkensalat',['rind','kartoffeln'],{fresh:true,effort:3}),
+  H('Gehacktespfanne mit Kürbis-Gratin & Reis',['rind'],{fresh:true}),
+  H('Quesadilla mit Rind & Guacamole',['rind'],{fresh:true}),
+  H('Quesadilla mit Gemüse & Rind',['rind'],{fresh:true}),
+  H('Pizza mit gemischtem Salat',['veg']),
+  H('Dinkel-Pizza mit gemischtem Salat',['veg']),
+  H('Omelette mit Käse, Brokkoli & Kartoffeln',['veg','kartoffeln']),
+  H('Kartoffelpuffer mit Apfel-Birnen-Kompott',['veg','kartoffeln']),
+  H('Kniddelen (Kartoffelknödeln) mit Apfelmus',['veg','kartoffeln']),
+  H('Kniddelen mit Speck & Apfelmus',['wurst','kartoffeln']),
+  H('Pfannkuchen mit Apfelmus',['veg']),
+  H('Kohlrabischnitzel mit Kräuterdip, Brokkoli & Kartoffelpüree',['veg','kartoffeln']),
+  H('Vegetarischer Kartoffel-Gemüse-Gratin',['veg','kartoffeln'],{effort:3}),
+  H('Schupfnudel-Gratin',['veg','kartoffeln'],{effort:3}),
+  H('Gnocchi-Gemüsepfanne',['veg','kartoffeln']),
+  H('Gemüserisotto mit Cocktailtomaten & Parmesan',['veg']),
+  H('Gefüllte Zucchini mit Bulgur & Rote-Bete-Salat mit Feta',['veg']),
+  H('Gefüllte Zucchini mit Reis & Blumenkohl',['veg']),
+  H('Wiener Würstchen mit Schupfnudeln & Brokkoli',['wurst']),
+  H('Wiener Würstchen mit Senf, Kartoffelpüree & Rotkohl',['wurst','kartoffeln']),
+  H('Wiener Würstchen mit Bratkartoffeln & grünem Bohnensalat',['wurst','kartoffeln']),
+  H('Würstchen mit Pellkartoffeln & gemischtem Salat',['wurst','kartoffeln']),
+  H('Würstchen mit Kartoffelpüree & Karotten',['wurst','kartoffeln']),
+  H('Choucroute garni mit Bratkartoffeln & Erbsen',['wurst','kartoffeln']),
+  H('Pasteten (Paschtéitchen) mit Pommes & Salat',['wurst']),
+].map((d,i)=>({ id:i+1, ...d }));
+// Luxemburgische Namen (aus Stefans Word-Menüplänen) – für die luxemburgische Plan-Ansicht
+const LB_NAMES = {
+  'Gemüsesuppe':'Geméiszopp','Tomatensuppe':'Tomatenzopp','Kürbissuppe':'Kürbiszopp','Lauchsuppe':'Porettenzopp',
+  'Blumenkohlsuppe':'Chouxfleurszopp','Brokkolisuppe':'Brokkolizopp','Selleriesuppe':'Zellerizopp','Kohlrabisuppe':'Kohlrabizopp',
+  'Karottensuppe':'Muertenzopp','Topinambursuppe':'Topinambourzopp','Kartoffelsuppe':'Gromperenzopp',
+  'Paprika-Karotten-Suppe':'Paprika-Muertenzopp','Erbsensuppe':'Iebessenzopp','Süßkartoffel-Karotten-Suppe':'Séissgromper-Muertzopp',
+  'Kürbis-Süßkartoffel-Suppe':'Kürbis-Séisgromperenzopp','Pastinakensuppe':'Pastinakenzopp','Spinatsuppe':'Spinatzopp',
+  'Bohnensuppe mit Kartoffeln':'Bounenzopp mat Gromper','Fenchelsuppe':'Fenchelzopp','Erbsen-Kartoffel-Suppe':'Iebessen-Gromperen-Zopp',
+  'Kürbis-Lauch-Suppe':'Kürbis-Porettenzopp','Karotten-Sellerie-Suppe':'Muerten-Zelleriezopp',
+  'Kartoffel-Kohlrabi-Suppe':'Gromperen-Kohlrabizopp','Butternut-Kürbissuppe':'Butternut-Kürbiszopp','Romanescosuppe':'Romanescozopp',
+  'Sellerie-Schwarzwurzel-Suppe':'Zellerie-Schwarz-Wuerzel-Zopp','Paprika-Tomaten-Suppe mit Frischkäse':'Paprika-Tomatenzopp mat Philadelphia',
+  'Lauch-Kartoffel-Suppe':'Poretten-Gromperenzopp','Zucchinisuppe':'Gourgettenzopp','Zucchini-Sellerie-Suppe':'Gourgetten-Zellerizopp',
+  'Zucchini-Karotten-Suppe':'Gourgetten-Muertenzopp',
+  'Rohkostteller':'Cruditéitenteller','Rote-Bete-Salat':'Rout Rommelszalot','Gefüllte Gurken':'Gefëllten Cornichoen',
+  'Mexikanischer Salat':'Mexikanesch Zalot','Tomate-Mozzarella':'Tomat-Mozzarella','Bohnensalat (Feierstengszalot)':'Feierstengszalot',
+  'Gemüsesticks mit Dip':'Geméis mat Dipp','Gefüllte Eier':'Gefëllten Eer','Tomatensalat':'Tomatenzalot',
+  'Griechischer Salat':'Grieschesch Zalot','Pizza-Schnecken':'Pizzaschnecken','Maiskörnersalat mit Ei':'Mauséiercherzalot mat gekachten Eër',
+  'Karotten-Sellerie-Salat mit Apfel':'Muerten-Zelleriezalot mat Apel','Linsensalat':'Lënsenzalot',
+  'Thunfisch-Reis-Salat':'Thon-Räiszalot','Rote-Linsen-Salat':'Rout Lënsenzalot','Salade Niçoise':'Salade Niçoise',
+  'Cracker mit Hummus':'Kräcker mat Humus','Avocado-Joghurt-Dip mit Gemüse':'Geméis mat Avocado-Joghurt-Dipp',
+  'Rote-Bete-Salat mit Feta & Kürbiskernen':'Rout Rommelszalot mat Feta a Kürbiskaeren','Bruschetta Italiana':'Bruschetta Italiana',
+  'Gemischter Salat':'Gemëschter Zalot','Frühlingsrollen':'Rouleau de Printemps','Toast mit Ziegenkäse & Honig':'Toast mat Geesekéis a Hunneg',
+  'Cracotte mit Thunfisch':'Cracotte mat Thon','Vitello Tonnato':'Vitello Tonato',
+  'Spaghetti Bolognese':'Spaghetti Bolognaise','Lasagne Bolognese':'Lasagne Bolognaise',
+  'Canneloni mit Fleischfüllung & Tomatensauce':'Canneloni mat Fleesch a Sauce Tomate',
+  'Spaghetti Pomodoro mit Käse & Oliven':'Spaghetti, Sauce Pomodoro mat gerapptem Kéis an Oliven',
+  'Ravioli Pomodoro mit Gurkensalat':'Ravioli à la Pomodoro mat Cornichongszalot',
+  'Dinkelnudeln mit Provence-Sauce & Karotten-Mais-Salat':'Dinkelnuddlen mat Sauce provençale an Muerten-Mais-Zalot',
+  'Dinkelnudeln mit Gemüse & Käsesauce':'Dinkelnuddelen mat gemëschtem Geméis a Kéiszooss',
+  'Spirelli Carbonara mit Gurkensalat & Feta':'Spirelli Carbonara a Kornichongszalot mat Feta',
+  'Tortellini mit Käsesauce & Cocktailtomaten':'Tortellini mat Kéiszoos a Cocktailtomaten',
+  'Tortellini mit Spinat & Käsesauce':'Tortellini mat Spinat a Kéiszoos',
+  'Rindsgeschnetzeltes mit Nudeln & Karotten':'Rëndsgeschnetzeltes mat Nuddelen a Muerten',
+  'Gemüsepfanne mit Hähnchen & chinesischen Nudeln':'Geméis-Paan mat Poulet a chinesesch Nuddelen',
+  'Putenbrust mit Spirelli, Erbsen & Karotten':'Dindebroscht mat Spirelli an Iebessen mat Muerten',
+  'Hähnchengeschnetzeltes mit Paprika, Zucchini & Couscous':'Pouletsgeschnetzeltes mat Paprika, Courgetten a Couscous',
+  'Hähnchengeschnetzeltes mit Couscous, Karotten & Erbsen':'Pouletgeschnëtzeltes, Couscous a Muerten-Ierbessen',
+  'Hähnchengeschnetzeltes mit Hirse & Romanesco':'Pouletgeschnëtzeltes mat Hirse a Romanesco',
+  'Hähnchen mit Reis & Bohnensalat':'Poulet mat Räis an Bounenzalot',
+  'Hähnchenfilet mit Gemüsesauce, Vollkornreis & Brokkoli':'Pouletsfilet mat Geméiszooss, Vollkarräis an Brokkoli',
+  'Hähnchen mit Kartoffeln & Karotten':'Poulet mat Gromperen an Muerten',
+  'Hähnchen mit Champignons, Pellkartoffeln & Gurkensalat':'Poulet mat Champignoen, gekachten Gromperen, Cornichongszalot',
+  'Hähnchenschnitzel mit Karotten & Vollkornreis':'Pouletsschnitzel mat Muerten a Vollkarräis',
+  'Hähnchenfilet mit Couscous & Brokkoli':'Filet vum Poulet, Couscous an Brokkoli',
+  'Bouché à la Reine mit Reis, Erbsen & Karotten':'Bouché à la Reine mat Räis an Iebessen mat Muerten',
+  'Putenschnitzel mit Dauphine-Kartoffeln & Karotten-Apfel-Salat':'Escalope de dinde mat Pommes Dauphines a Karotten-Apel-Zalot',
+  'Putengeschnetzeltes mit Brokkoli & Hirse':'Dindegeschnetzeltes mat Brokkoligeméis an Hirse',
+  'Chicken-Nuggets (hausgemacht) mit Kartoffelpüree, Erbsen & Karotten':'Chickennuggets Maison mat Gromperpurée, Iebessen a Muerten',
+  'Gebratener Reis mit Hähnchen & Gemüse':'Gebrodene Räis mat Poulet a Geméis',
+  'Lachs mit Kartoffeln & Gurkensalat':'Saumon mat Gromperen a Cornichongszalot',
+  'Lachs auf Zucchinibett mit Basmatireis':'Saumon um Zucchinibett a Basmatiräis',
+  'Lachs mit Couscous & Blumenkohl':'Saumon, Couscous a Chou-fleur',
+  'Lachs aus dem Ofen mit Vollkornreis & grünen Bohnen':'Saumon mat Vollkornräis a grénge Bounen',
+  'Lachs-Quiche mit Karotten-Sellerie-Salat':'Quiche mat Saumon an Muerten-Zellerie-Zalot',
+  'Lachs mit Kartoffelpüree & Fenchel':'Gebrodene Saumon mat Purée a Fenchel',
+  'Kabeljau aus dem Ofen mit Kürbis-Kartoffel-Püree':'Cabillaud am Schäffchen mat Kürbis-Gromper-Purée',
+  'Kabeljau mit Vollkornreis & Ratatouille':'Cabillaud mat Vollkornreis a Ratatouille',
+  'Kabeljau mit Blumenkohl & Ebly':'Kabeljau mat Chou-fleur an Ebly',
+  'Kabeljau mit Lauchgemüse, Hirse & Karotten-Sellerie-Salat':'Cabillaud mat Poretten, Hirse an Muerten-Zellerizalot',
+  'Kabeljau mit Couscous & Hokkaido-Creme':'Cabillaud mat Couscous an Hokkaidocrème',
+  'Kabeljau mit Ofengemüse & Kartoffelpüree':'Cabillaud mat Geméis am Schäffchen a Gromperepuree',
+  'Fisch mit Remoulade, Kartoffeln & grünem Salat':'Fësch mat Remoulade, Gromperen a grénger Zalot',
+  'Fisch in der Folie mit Gemüse & Bulgur':'Fësch an der Papillot mat Geméis a Bulgur',
+  'Fisch auf Gemüsebett mit Reis & Rote-Bete-Salat':'Fësch um Geméisbett mat Räis a roud Rommelszalot',
+  'Duo vom Fisch auf Gemüsebett mit Vollkornreis':'Duo vum Fësch um Geméisbett mat Vollkarräis',
+  'Fischstäbchen mit Dillsauce, Vollkornreis & Gurkensalat':'Fish-Sticks mat Dillszooss, Vollkarräis a Cornichongszalot',
+  'Fish & Chips mit Gurkensalat':'Fish & Chips mat Cornichongszalot',
+  'Fischbouletten mit Joghurt-Dip, Kürbis & Couscous':'Fëschbouletten mat Yoghurtdip, Kürbis a Couscous',
+  'Hamburger mit Pommes & grünem Salat':'Hamburger mat Fritten a grénger Zalot',
+  'Mini-Hamburger mit Pommes & Salat':'Mini-Hamburger mat Fritten an Zalot',
+  'Rindfleisch-Bouletten mit Spätzle & Blumenkohl':'Rëndsbouletten mat Spätzle a Chou-fleur',
+  'Bouletten mit Kartoffelpüree & Kürbis':'Bouletten mat Püree a Kürbis',
+  'Rindsbouletten mit Kartoffelpüree & Kürbisgemüse':'Rëndsbouletten mat Gromperpurée a Kürbisgeméis',
+  'Rindsgeschnetzeltes mit Karotten-Kohlrabi-Gemüse & Bulgur':'Rëndsgeschnetzeltes mat Muerten-Kohlrabigeméis a Bulgur',
+  'Rindsgeschnetzeltes mit Ratatouille & Reis':'Rëndsgeschnetzeltes mat Ratatouille a Räis',
+  'Rindsrouladen mit Rotkohl & Kartoffeln':'Rëndsrouladen mat roude Kabes an Gromperen',
+  'Kalbsrouladen mit Champignons, Bulgur & Brokkoli':'Kallefsrouladen mat Champignoen, Boulgour a Brokkoli',
+  'Kalbsrouladen mit Reis & Brokkoli':'Kallefsrouladen mat Räis a Brokkoli',
+  'Kalbsragout mit Champignons, Spätzle & Gurkensalat':'Kallefsragout mat Champignoen, Spätzle a Kornichongszalot',
+  'Kalbsschnitzel mit Pommes & Gurkensalat':'Kallefsschnitzel mat Fritten a Cornichongszalot',
+  'Kalbsgeschnetzeltes Zürcher Art mit Reis':'Kallefsgeschnetzeltes op Zürcher Art mat Räis',
+  'Kalbsfrikassee (Blanquette de veau) mit Reis, Erbsen & Karotten':'Blanquette de veau mat Räis, Iebessen a Muerten',
+  'Boeuf Bourguignon mit Pellkartoffeln':'Boeuf Bourguignon mat gekachten Gromperen',
+  'Gulasch mit Karotten & Spätzle':'Gulasch mat Muerten a Spätzle',
+  'Chili con Carne mit Vollkornreis & grünem Salat':'Chili con carne mat Vollkarräis a grénger Zalot',
+  'Shepherd\'s Pie mit Gurkensalat':'Shepherd\'s Pie mat Cornichongszalot',
+  'Gehacktespfanne mit Kürbis-Gratin & Reis':'Gehacktespan mat Kürbis-Gratin a Räis',
+  'Quesadilla mit Rind & Guacamole':'Quesadilla mat Rënd a Guacamole',
+  'Quesadilla mit Gemüse & Rind':'Quesadilla mat Geméis a Rënd',
+  'Pizza mit gemischtem Salat':'Pizza mat gemëschter Zalot',
+  'Dinkel-Pizza mit gemischtem Salat':'Dinkelpizza mat gemëschter Zalot',
+  'Omelette mit Käse, Brokkoli & Kartoffeln':'Omlette mat Kéis, Brokkoli a Gromperen',
+  'Kartoffelpuffer mit Apfel-Birnen-Kompott':'Gromperekichelcher mat Apel-Birekompott',
+  'Kniddelen (Kartoffelknödeln) mit Apfelmus':'Kniddelen mat Apelkompott',
+  'Kniddelen mit Speck & Apfelmus':'Kniddelen mat Speck an Äppelkompott',
+  'Pfannkuchen mit Apfelmus':'Pangescher mat Apelkompott',
+  'Kohlrabischnitzel mit Kräuterdip, Brokkoli & Kartoffelpüree':'Kohlrabischnitzel mat Kräiderdipp, Brokkoli a Gromperepuree',
+  'Vegetarischer Kartoffel-Gemüse-Gratin':'Vegetareschen Gromper-Geméis-Gratin mat gemëschter Zalot',
+  'Schupfnudel-Gratin':'Schupfnudelgratin',
+  'Gnocchi-Gemüsepfanne':'Gnocchi-Geméispaan',
+  'Gemüserisotto mit Cocktailtomaten & Parmesan':'Geméisrisotto mat Cocktailtomaten, Parmesan a grénger Zalot',
+  'Gefüllte Zucchini mit Bulgur & Rote-Bete-Salat mit Feta':'Gefëllten Gourgetten, Bulgur a Rout Rommelszalot mat Feta an Kürbiskären',
+  'Gefüllte Zucchini mit Reis & Blumenkohl':'Gefëllte Courgetten mat Räis a Chou-fleur',
+  'Wiener Würstchen mit Schupfnudeln & Brokkoli':'Wäinzoosiss mat Schupfnuddelen a Brokkoli',
+  'Wiener Würstchen mit Senf, Kartoffelpüree & Rotkohl':'Wäinzoossis mat Moschterzooss, Pürée a roude Kabes',
+  'Wiener Würstchen mit Bratkartoffeln & grünem Bohnensalat':'Wäinzoosiss mat gebrode Gromperen a grénger Bounenzalot',
+  'Würstchen mit Pellkartoffeln & gemischtem Salat':'Wurschtskonschtmati…',
+  'Würstchen mit Kartoffelpüree & Karotten':'Wiirchercher mat Gromperepuree a Muerten',
+  'Choucroute garni mit Bratkartoffeln & Erbsen':'Choucroûte garni mat gebrode Gromperen an Iebessen',
+  'Pasteten (Paschtéitchen) mit Pommes & Salat':'Paschtéitchen mat Fritten an Zalot'
+};
+LB_NAMES['Würstchen mit Pellkartoffeln & gemischtem Salat'] = 'Wërschtercher mat gekachte Gromperen a gemëschter Zalot';
+// Regeltypen: catWeek (Kategorie n× pro Woche), monthly (Monatsgericht max n×/Monat),
+// minGap (min. Abstand in Wochen), freshDays (frische Gerichte nur an Tagen X), effortDays (Aufwand n bevorzugt an Tagen X),
+// dishDay (festes Gericht an festen Wochentagen)
+const DEFAULT_RULES = [
+  // ---- Suppen: ⭐-Lieblingssuppen jeden Monat garantiert & verteilt, Rest füllt auf ----
+  { id:'r11', course:'suppe', type:'minGap',   params:{ weeks:3 } },
+  { id:'r12', course:'suppe', type:'monthly',  params:{ max:2 } },
+  { id:'r13', course:'suppe', type:'freshDays', params:{ days:[2,3,4] } },
+  { id:'r19', course:'suppe', type:'dishDay',  params:{ name:'Gemüsesuppe', days:[4] } },
+  { id:'r20', course:'suppe', type:'monthlyMust', params:{ perWeek:2 } },
+  { id:'r21', course:'suppe', type:'sameVegWeek', params:{ max:1 } },
+  // ---- Vorspeisen ----
+  { id:'r14', course:'vorspeise', type:'minGap', params:{ weeks:4 } },
+  { id:'r15', course:'vorspeise', type:'monthly', params:{ max:1 } },
+  { id:'r16', course:'vorspeise', type:'freshDays', params:{ days:[2,3,4] } },
+  { id:'r17', course:'vorspeise', type:'perWeek', params:{ max:2 } },
+  { id:'r18', course:'vorspeise', type:'courseDepEffort', params:{ course:'haupt', effortMax:2 } },
+  // ---- Hauptgerichte: ⭐-Gerichte jeden Monat garantiert & verteilt ----
+  { id:'r1', course:'haupt', type:'catWeek',  params:{ cat:'nudeln', min:1, max:1 } },
+  { id:'r2', course:'haupt', type:'catWeek',  params:{ cat:'rind', min:1, max:1 } },
+  { id:'r3', course:'haupt', type:'catWeek',  params:{ cat:'huhn', min:1, max:1 } },
+  { id:'r4', course:'haupt', type:'catWeek',  params:{ cat:'fisch', min:1, max:1 } },
+  { id:'r5', course:'haupt', type:'catWeek',  params:{ cat:'veg', min:1, max:1 } },
+  { id:'r6', course:'haupt', type:'catWeek',  params:{ cat:'kartoffeln', min:1, max:2 } },
+  { id:'r6b', course:'haupt', type:'catWeek',  params:{ cat:'wurst', min:0, max:1 } },
+  { id:'r7', course:'haupt', type:'monthly',  params:{ max:1 } },
+  { id:'r8', course:'haupt', type:'minGap',   params:{ weeks:4 } },
+  { id:'r9', course:'haupt', type:'freshDays', params:{ days:[2,3,4] } },
+  { id:'r10', course:'haupt', type:'effortDays', params:{ effort:3, days:[3,4] } },
+  { id:'r22', course:'haupt', type:'monthlyMust', params:{ perWeek:2 } },
+];
+// Gleiche Gemüse-Zutat im Namen erkennen (z. B. „Karottensuppe" ↔ „Paprika-Karotten-Suppe")
+function vegTokens(name){
+  const STOP = new Set(['suppe','zopp','gemüse','gemuse','mit','und','salat','creme','frischkäse','püree','kompott']);
+  return (name.toLowerCase().split(/[^a-zäöüß]+/)).filter(t=>t.length>=5 && !STOP.has(t));
+}
+function sharesVeg(a,b){
+  const ta = vegTokens(a), tb = vegTokens(b);
+  for(const x of ta) for(const y of tb) if(x.startsWith(y) || y.startsWith(x)) return true;
+  return false;
+}
+const RULE_LABELS = {
+  catWeek: 'Kategorie pro Woche', monthly: 'Monatsgericht (⭐) max. …/Monat',
+  minGap: 'Mindestabstand gleiche Gerichte (Wochen)', freshDays: 'Frische Gerichte (🐟) nur an Tagen', effortDays: 'Aufwendige Gerichte bevorzugt an Tagen',
+  perWeek: 'Max. Gerichte pro Woche', courseDepEffort: 'Nur an Tagen mit einfachem Hauptgericht',
+  dishDay: 'Festes Gericht an Wochentagen',
+  monthlyMust: '⭐-Gerichte: jedes 1× pro Monat, max. … pro Woche (Pflicht)',
+  sameVegWeek: 'Gleiches Gemüse (im Namen): max. …× pro Woche'
+};
+
+// ---------- Kombi-Bausteine (Protein + Feculon + Gemüse) ----------
+const P = (name,cats,lb)=>({ name, nameLb:lb||'', cats:cats||[] });
+const DEFAULT_PARTS = {
+  protein: [
+    P('Rindergeschnetzeltes',['rind']), P('Kalbsgeschnetzeltes',['rind']),
+    P('Hühnergeschnetzeltes',['huhn']), P('Hühnerfilet',['huhn']),
+    P('Fischfilet',['fisch']), P('Lachsfilet',['fisch']),
+    P('Omelette',['veg'])
+  ].map((p,i)=>({ id:1000+i, ...p })),
+  feculon: [
+    P('Reis'), P('Kartoffelpüree',['kartoffeln']), P('Kartoffeln',['kartoffeln']),
+    P('Nudeln',['nudeln']), P('Couscous'), P('Quinoa'), P('Polenta')
+  ].map((p,i)=>({ id:2000+i, ...p })),
+  gemuese: [
+    P('Brokkoli'), P('Karotten'), P('Erbsen & Karotten'), P('Grüne Bohnen'),
+    P('Blumenkohl'), P('Zucchini'), P('Spinat'), P('Kürbis'), P('Mais'), P('Paprika')
+  ].map((p,i)=>({ id:3000+i, ...p }))
+};
+// ---------- Laden / Speichern ----------
+let cats, dishes, rules, plan, parts, planLang = 'de';
+function stateToObj(){ return { version:VERSION, cats, dishes, rules, parts }; }
+function loadAll(){
+  cats = load('mp_cats', DEFAULT_CATS);
+  dishes = load('mp_dishes', STARTER_DISHES);
+  rules = load('mp_rules', DEFAULT_RULES);
+  parts = load('mp_parts', DEFAULT_PARTS);
+  plan = load('mp_plan', null);
+  planLang = load('mp_lang', 'de');
+  // Einmalige Übernahme fehlender Standard-Regeln (z. B. Vorspeisen-Regeln ab v1.4.1), falls alte Regeln gespeichert sind
+  if(!localStorage.getItem('mp_rules_149')){
+    let added = false;
+    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }
+    localStorage.setItem('mp_rules_149','1');
+    if(added) saveAll();
+  }
+  // v1.4.12: Regel „Jeden Freitag Gemüsesuppe" (r19) einmalig ergänzen
+  if(!localStorage.getItem('mp_rules_1412')){
+    let added = false;
+    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }
+    localStorage.setItem('mp_rules_1412','1');
+    if(added) saveAll();
+  }
+  // v1.4.13: Regel „⭐-Suppen mindestens 1× pro Monat" (r20) einmalig ergänzen
+  if(!localStorage.getItem('mp_rules_1413')){
+    let added = false;
+    for(const dr of DEFAULT_RULES) if(!rules.some(r=>r.id===dr.id)){ rules.push(dr); added = true; }
+    localStorage.setItem('mp_rules_1413','1');
+    if(added) saveAll();
+  }
+  // v1.5.0: Regeln einmalig auf das neue, aufgeräumte Regelwerk zurücksetzen (nach Stefans Anweisungen)
+  if(!localStorage.getItem('mp_rules_150')){
+    rules = DEFAULT_RULES.map(r=>({ ...r, params:{ ...r.params } }));
+    localStorage.setItem('mp_rules_150','1');
+    saveAll();
+  }
+  // v1.5.1: ⭐-Hauptgerichte dürfen 2× pro Woche (verteilt); Nudeln bleiben über Kategorie-Regel auf 1/Woche begrenzt
+  if(!localStorage.getItem('mp_rules_151')){
+    const r = rules.find(x=>x.id==='r22' && x.type==='monthlyMust');
+    if(r && (r.params.perWeek||1)===1) r.params.perWeek = 2;
+    localStorage.setItem('mp_rules_151','1');
+    saveAll();
+  }
+  // v1.6.1: ⭐-Suppen max. 2/Woche – bei 6+ Sterne-Suppen passt 1/Woche rechnerisch nicht in den Monat
+  if(!localStorage.getItem('mp_rules_160')){
+    const r = rules.find(x=>x.id==='r20' && x.type==='monthlyMust');
+    if(r && (r.params.perWeek||1)===1) r.params.perWeek = 2;
+    localStorage.setItem('mp_rules_160','1');
+    saveAll();
+  }
+}
+function load(k, fb){ try { const v = JSON.parse(localStorage.getItem(k)); return v ?? fb; } catch(e){ return fb; } }
+function saveAll(){
+  localStorage.setItem('mp_cats', JSON.stringify(cats));
+  localStorage.setItem('mp_dishes', JSON.stringify(dishes));
+  localStorage.setItem('mp_rules', JSON.stringify(rules));
+  if(parts) localStorage.setItem('mp_parts', JSON.stringify(parts));
+  if(plan) localStorage.setItem('mp_plan', JSON.stringify(plan)); else localStorage.removeItem('mp_plan');
+  localStorage.setItem('mp_lang', JSON.stringify(planLang));
+}
+
+// ---------- Sprachinput ----------
+let recording = false;
+function startSpeech(targetId, cb){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert('Sprachinput wird von diesem Browser nicht unterstützt (Chrome/Edge verwenden).'); return; }
+  if(recording && window._recog){ window._recog.stop(); return; }
+  const r = new SR(); window._recog = r; r.lang = 'de-DE'; r.interimResults = false;
+  r.onresult = (e)=>{ document.getElementById(targetId).value = e.results[0][0].transcript.trim(); if(cb) cb(); };
+  r.onend = ()=>{ recording=false; if(cb) cb(); };
+  r.onerror = ()=>{ recording=false; if(cb) cb(); };
+  r.start(); recording = true; if(cb) cb();
+}
+
+// ---------- Planner (regelbasiert, erfindet NIE neue Gerichte) ----------
+// Kombi-Gericht zusammensetzen: Protein + Beilage + Gemüse, keine Dopplung in der Woche, Kategorien respektieren
+function composeCombo(pd, placedInWeek, w, rc){
+  const prot = pd.part;
+  const okCats = (item)=>{
+    for(const r of rc){ if(r.type==='catWeek' && (item.cats||[]).includes(r.params.cat)){
+      const used = placedInWeek.filter(x=>x && x.d.cats.includes(r.params.cat)).length;
+      if(used >= r.params.max) return false;
+    } }
+    return true;
+  };
+  const fecs = (parts.feculon||[]).filter(f=>okCats(f) && !placedInWeek.some(x=>x && x.f && x.f.id===f.id));
+  const gems = (parts.gemuese||[]).filter(g=>okCats(g) && !placedInWeek.some(x=>x && x.g && x.g.id===g.id));
+  if(!fecs.length || !gems.length) return null;
+  const pick = (arr, salt)=> arr[(Math.abs(prot.id)*7 + w*13 + salt*29) % arr.length];
+  const f = pick(fecs, 1), g = pick(gems, 2);
+  const lbN = (x)=> x.nameLb || '';
+  const nameLb = (lbN(prot) && lbN(f) && lbN(g)) ? lbN(prot)+' mat '+lbN(f)+' an '+lbN(g) : '';
+  return { d:{ id: pd.id, course:'haupt', combo:true, part:prot,
+    name: prot.name + ' mit ' + f.name + ' & ' + g.name, nameLb,
+    cats: [...new Set([...(prot.cats||[]), ...(f.cats||[])])], monthly:false, fresh:false, effort: prot.effort||2 }, f, g };
+}
+function generatePlan(){
+  const out = [];
+  const N_WEEKS = 13;
+  const allPlaced = {};
+  // Hauptgericht zuerst planen, damit Vorspeisen-Regeln den Aufwand des Tages kennen
+  const PLANNER_ORDER = ['suppe','haupt','vorspeise'];
+  for(const c of PLANNER_ORDER){
+    const cd = dishes.filter(d=>d.course===c && !d.archived);
+    if(cd.length===0 && !(c==='haupt' && (parts.protein||[]).length)) continue;
+    // Kombi-Gerichte (Protein + Beilage + Gemüse) nur bei Hauptgerichten
+    let comboPool = [];
+    if(c==='haupt') for(const p of (parts.protein||[])) comboPool.push({ id:'k'+p.id, course:'haupt', combo:true, part:p, name:p.name, cats:[...(p.cats||[])], monthly:false, fresh:false, effort:p.effort||2 });
+    const pool = cd.concat(comboPool);
+    const rc = rules.filter(r=>r.course===c);
+    const lastUsed = {}, monthCount = {};
+    // ⭐-Gerichte gleichmäßig Zielwochen zuweisen (0–3, gestaffelt) statt zufällig – schöne Verteilung übers Monat
+    const starWeek = {};
+    cd.filter(d=>d.monthly).forEach((d,i)=> starWeek[d.id] = i%4);
+    const placed = Array(N_WEEKS*5).fill(null);
+    for(let w=0; w<N_WEEKS; w++){
+      let placedInWeek = [];
+      const takenDays = new Set();
+      const m = Math.floor(w/4.34);
+      const wkInMonth = Math.min(w - Math.floor(m*4.34), 3);
+      // Hartes Regelwerk: darf Gericht d an diesem Tag? (relaxCats: Kategorie-Limits notfalls ignorieren)
+      const okDish = (d, day, idx, relaxCats)=>{
+        for(const r of rc){
+          const p = r.params;
+          if(!relaxCats && r.type==='catWeek' && d.cats.includes(p.cat)){
+            const used = placedInWeek.filter(x=>x && x.d.cats.includes(p.cat)).length;
+            if(used >= p.max) return false;
+          }
+          if(r.type==='freshDays' && d.fresh && !p.days.includes(day)) return false;
+          if(r.type==='monthlyMust' && d.monthly && placedInWeek.filter(x=>x && x.d.monthly).length >= (p.perWeek||1)) return false;
+          if(r.type==='perWeek' && placedInWeek.length >= p.max) return false;
+          if(r.type==='sameVegWeek' && placedInWeek.some(x=>x && sharesVeg(x.d.name, d.name)) && placedInWeek.filter(x=>x && sharesVeg(x.d.name, d.name)).length >= p.max) return false;
+          if(r.type==='courseDepEffort'){ const dep = (allPlaced[p.course]||[])[idx]; if(dep && dep.effort > p.effortMax) return false; }
+          if(r.type==='monthly' && d.monthly && (monthCount[d.id]||{})[m]) return false;
+          if(r.type==='minGap' && lastUsed[d.id]!==undefined && (w - Math.floor(lastUsed[d.id]/5)) < p.weeks) return false;
+          if(d.combo && placedInWeek.some(x=>x && x.d.combo && x.d.part && d.part && x.d.part.id===d.part.id)) return false;
+        }
+        return true;
+      };
+      // Pflicht-⭐ (monthlyMust) als Erstes setzen – VOR allen anderen Gerichten,
+      // damit Kombis und Kategorie-Zähler ihnen keine Tage wegnehmen
+      const mmr = rc.find(r=>r.type==='monthlyMust');
+      if(mmr){
+        const forcedDays = new Set();
+        for(const r of rc) if(r.type==='dishDay') (r.params.days||[]).forEach(x=>forcedDays.add(x));
+        let cap = mmr.params.perWeek||1;
+        for(const d of pool.filter(d=>d.monthly && !((monthCount[d.id]||{})[m]) && wkInMonth >= (starWeek[d.id] ?? Math.abs(d.id)%4))){
+          if(cap<=0) break;
+          for(let day=0; day<5; day++){
+            if(takenDays.has(day) || forcedDays.has(day)) continue;
+            const idx = w*5+day;
+            if(!okDish(d, day, idx, false)) continue;
+            placedInWeek.push({ d, day }); takenDays.add(day);
+            lastUsed[d.id] = idx; monthCount[d.id] = monthCount[d.id]||{}; monthCount[d.id][m] = true;
+            cap--; break;
+          }
+        }
+      }
+      for(let day=0; day<5; day++){
+        if(takenDays.has(day)) continue;
+        const idx = w*5+day;
+        let cands = pool.filter(d=>okDish(d, day, idx, false));
+        if(cands.length===0) cands = pool.filter(d=>okDish(d, day, idx, true));   // notfalls Kategorie-Limits lockern: lieber ein Gericht als ein leerer Tag
+        // Aufwand-Präferenz als Bewertung
+        const scored = cands.map(d=>{
+          let s = 0;
+          for(const r of rc){ if(r.type==='effortDays' && d.effort===r.params.effort && r.params.days.includes(day)) s += 2;
+            if(r.type==='effortDays' && d.effort===r.params.effort && !r.params.days.includes(day)) s -= 2;
+            // Kategorie-Mindestmenge aktiv ansteuern (z. B. „Huhn mind. 1× pro Woche")
+            if(r.type==='catWeek' && r.params.min>0 && d.cats.includes(r.params.cat)){
+              const used = placedInWeek.filter(x=>x && x.d.cats.includes(r.params.cat)).length;
+              if(used < r.params.min) s += 3;
+            }
+          }
+          if(placedInWeek.some(p=>p.d.id===d.id)) s -= 5;               // nicht zweimal in derselben Woche
+          s += Math.min((lastUsed[d.id]===undefined?999:(idx-lastUsed[d.id]))/7, 6)/6;  // lange nicht verwendet = besser
+          if(d.monthly){
+            const mr = rc.find(r=>r.type==='monthly');
+            if(mr){
+              const m = Math.floor(w/4.34);
+              const usedThisMonth = (monthCount[d.id]||{})[m];
+              if(!usedThisMonth){
+                const prefWeek = starWeek[d.id] ?? (Math.abs(d.id) % 4);       // Zielwoche im Monat, verteilt die ⭐-Gerichte
+                const wkInMonth = Math.min(w - Math.floor(m*4.34), 3);
+                s += wkInMonth >= prefWeek ? 8 : 2;                 // ab Zielwoche stark bevorzugt
+              }
+            } else s += 1;
+          }
+          s += ((Math.abs(d.id)*31 + w*17 + day*7) % 100)/1000;          // kleine Streuung, damit Tage/Gerichte variieren
+          return { d, s };
+        }).sort((a,b)=>b.s-a.s);
+        // Festes Gericht an festen Wochentagen (dishDay): überschreibt alle anderen Regeln
+        let forced = null;
+        for(const r of rc){ const p=r.params; if(r.type==='dishDay' && p.days.includes(day)){ const fd = cd.find(d=>d.name===p.name); if(fd){ forced = fd; break; } } }
+        const best = forced ? { d:forced } : scored[0];
+        if(best){
+          let bd = best.d, cf = null, cg = null;
+          if(bd.combo){ const cc = composeCombo(bd, placedInWeek, w, rc); if(cc){ bd = cc.d; cf = cc.f; cg = cc.g; } else { const alt = scored.find(x=>!x.d.combo); bd = alt ? alt.d : null; } }
+          if(bd){ placedInWeek.push({ d:bd, day, f:cf, g:cg }); lastUsed[bd.id] = idx;
+            if(bd.monthly){ monthCount[bd.id]=monthCount[bd.id]||{}; monthCount[bd.id][m]=true; } }
+        }
+      }
+      for(const pe of placedInWeek) placed[w*5+pe.day] = pe.d;
+    }
+    allPlaced[c] = placed;
+    out.push({ course:c, days:placed });
+  }
+  plan = out;
+  const warnings = checkPlanConflicts(out, N_WEEKS);
+  saveAll(); render();
+  if(warnings.length) showWarnings(warnings);
+}
+// Prüft den fertigen Plan auf Regeln, die sich nicht einhalten ließen
+function checkPlanConflicts(out, N_WEEKS){
+  const warnings = [];
+  for(const o of out){
+    const c = o.course, days = o.days;
+    const rc = rules.filter(r=>r.course===c);
+    // 1) Zu wenige Gerichte platziert („max. pro Woche"-Regeln erzeugen bewusst leere Tage – kein Konflikt)
+    const perWeekRule = rc.find(r=>r.type==='perWeek');
+    const quota = perWeekRule ? perWeekRule.params.max : 5;
+    let shortWeeks = 0, missingTotal = 0;
+    for(let w=0; w<N_WEEKS; w++){
+      const placedCnt = [0,1,2,3,4].filter(day=>days[w*5+day]).length;
+      if(placedCnt < quota){ shortWeeks++; missingTotal += quota - placedCnt; }
+    }
+    if(shortWeeks) warnings.push(COURSES[c]+': in '+shortWeeks+' Woche(n) konnten zu wenige Gerichte platziert werden ('+missingTotal+' Tag(e) mehr leer als vorgesehen) – zu wenige Gerichte oder Regeln zu streng.');
+    // 2) Festes Gericht an festen Tagen nicht eingehalten
+    for(const r of rc) if(r.type==='dishDay'){
+      let miss = 0;
+      (r.params.days||[]).forEach(day=>{ for(let w=0; w<N_WEEKS; w++){ const d = days[w*5+day]; if(!d || d.name!==r.params.name) miss++; } });
+      if(miss) warnings.push(COURSES[c]+': Festes Gericht „'+r.params.name+'" fehlt '+miss+'× – Gericht umbenannt, archiviert oder gelöscht?');
+    }
+    // 3) Pflicht-⭐ nicht in jedem Monat
+    if(rc.some(r=>r.type==='monthlyMust')){
+      const totalMonths = Math.floor((N_WEEKS-1)/4.34)+1;
+      for(const d of dishes.filter(x=>x.course===c && x.monthly && !x.archived)){
+        const found = new Set();
+        for(let w=0; w<N_WEEKS; w++) for(let day=0; day<5; day++){ const p = days[w*5+day]; if(p && p.id===d.id) found.add(Math.floor(w/4.34)); }
+        const miss = totalMonths - found.size;
+        if(miss>0) warnings.push(COURSES[c]+': ⭐ „'+d.name+'" fehlt in '+miss+' Monat('+(miss>1?'e':'')+') – zu viele ⭐-Gerichte oder Regeln zu streng.');
+      }
+    }
+    // 4) Kategorie-Mindestmenge pro Woche nicht erreicht
+    for(const r of rc) if(r.type==='catWeek' && r.params.min>0){
+      let miss = 0;
+      for(let w=0; w<N_WEEKS; w++){
+        let cnt = 0; for(let day=0; day<5; day++){ const d = days[w*5+day]; if(d && d.cats.includes(r.params.cat)) cnt++; }
+        if(cnt < r.params.min) miss++;
+      }
+      const cl = (cats.find(x=>x.id===r.params.cat)||{}).label || r.params.cat;
+      if(miss) warnings.push(COURSES[c]+': Kategorie „'+cl+'" fehlt in '+miss+' Woche(n) – evtl. zu wenige Gerichte dieser Kategorie.');
+    }
+  }
+  return warnings;
+}
+function showWarnings(warnings){
+  const old = document.getElementById('warnbox'); if(old) old.remove();
+  const b = document.createElement('div'); b.id = 'warnbox';
+  b.innerHTML = `<div class="card"><h2>⚠️ Hinweise zum Plan</h2>
+    <div class="hint">Der Plan wurde erstellt, aber folgende Regeln ließen sich nicht vollständig einhalten:</div>
+    ${warnings.map(w=>`<div class="witem">${esc(w)}</div>`).join('')}
+    <div class="actions"><button class="btn" onclick="document.getElementById('warnbox').remove()">Alles klar</button></div></div>`;
+  document.body.appendChild(b);
+}
+
+// ---------- UI-Gerüst ----------
+const app = document.getElementById('app');
+let tab = 'haupt';
+const TABS = ['suppe','vorspeise','haupt','kombis','monatlich','archiv','plan','regeln','sicherung'];
+function toggleMenu(){ const n=document.getElementById('mainnav'); const open=n.classList.toggle('open'); document.getElementById('menuarr').style.transform = open?'rotate(180deg)':''; document.getElementById('menubtn').setAttribute('aria-expanded', String(open)); }
+function closeMenu(){ const n=document.getElementById('mainnav'); if(!n.classList.contains('open')) return; n.classList.remove('open'); document.getElementById('menuarr').style.transform=''; document.getElementById('menubtn').setAttribute('aria-expanded','false'); }
+for(const t of TABS){
+  document.getElementById('tab-'+t).onclick = ()=>{ tab=t; editId=null; closeMenu(); render(); window.scrollTo({top:0}); };
+}
+function syncTab(){
+  for(const t of TABS) document.getElementById('tab-'+t).classList.toggle('active', tab===t);
+  document.querySelectorAll('nav button').forEach(b=>b.style.background='');
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+function render(){ syncTab();
+  if(tab==='monatlich') renderMonthly();
+  else if(tab==='kombis') renderKombis();
+  else if(tab==='archiv') renderArchiv();
+  else if(tab==='plan') renderPlan();
+  else if(tab==='regeln') renderRules();
+  else if(tab==='sicherung') renderBackup();
+  else renderDishes(tab);
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function catChip(id){ const c = cats.find(x=>x.id===id); if(!c) return ''; return `<span class="tag" style="background:${c.color}1a;color:${c.color}">${c.icon} ${esc(c.label)}</span>`; }
+
+// ---------- Tab: Gerichte (Suppe / Vorspeise / Hauptgericht) ----------
+let form = { name:'', nameLb:'', cats:[], monthly:false, fresh:false, effort:2 };
+let editId = null;
+function resetForm(){ form = { name:'', nameLb:'', cats:[], monthly:false, fresh:false, effort:2 }; editId=null; }
+function syncName(){ const el = document.getElementById('dishName'); if(el) form.name = el.value; const lb = document.getElementById('dishNameLb'); if(lb) form.nameLb = lb.value; }
+function setFlag(key){ syncName(); form[key] = !form[key]; renderDishes(currentDishCourse()); }
+function setEffort(e){ syncName(); form.effort = e; renderDishes(currentDishCourse()); }
+function renderDishes(course){
+  const list = dishes.filter(d=>d.course===course && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));
+  const isEdit = editId!==null;
+  app.innerHTML = `
+  <div class="card">
+    <h2>${isEdit?'✏️ Hauptgericht bearbeiten':'➕ Neues '+(course==='haupt'?'Hauptgericht':COURSES[course])}</h2>
+    <input type="text" id="dishName" placeholder="${COURSES[course]} sagen oder tippen …" value="${esc(form.name)}">
+    <input type="text" id="dishNameLb" placeholder="Name op Lëtzebuergesch (facultativ, fir de Plang)" value="${esc(form.nameLb||'')}">
+    <button class="btn ${recording?'rec':''}" style="margin-bottom:10px" onclick="startSpeech('dishName',()=>renderDishes('${course}'))">${recording?'🔴 Aufnahme … tippen zum Stoppen':'🎤 Ansagen'}</button>
+    <div class="hint">Kategorien (mehrfach möglich):</div>
+    <div class="chiprow">${cats.map(c=>`<span class="chip ${form.cats.includes(c.id)?'on':''}" style="${form.cats.includes(c.id)?'background:'+c.color+';border-color:'+c.color:''}" onclick="toggleCat('${c.id}')">${c.icon} ${esc(c.label)}</span>`).join('')}</div>
+    <div class="chiprow">
+      <span class="chip ${form.monthly?'on':''}" onclick="setFlag('monthly')">⭐ 1× pro Monat</span>
+      <span class="chip ${form.fresh?'on':''}" onclick="setFlag('fresh')">🐟 frische Lieferung</span>
+    </div>
+    <div class="hint">Arbeitsaufwand:</div>
+    <div class="chiprow">${[1,2,3].map(e=>`<span class="chip ${form.effort===e?'on':''}" onclick="setEffort(${e})">${['','wenig','mittel','viel'][e]}</span>`).join('')}</div>
+    <div class="actions">
+      <button class="btn" onclick="saveDish('${course}')">${isEdit?'Änderungen speichern':'Speichern'}</button>
+      ${isEdit?'<button class="btn secondary" onclick="resetForm();renderDishes(\''+course+'\')">Abbrechen</button>':''}
+    </div>
+  </div>
+  <div class="card">
+    <h2>🏷️ Kategorien verwalten</h2>
+    ${cats.map((c,i)=>`
+      <div class="catrow">
+        <span class="catdot" style="background:${c.color}" onclick="cycleColor(${i})"></span>
+        <span style="flex:1;font-size:.95rem">${c.icon} ${esc(c.label)}</span>
+        <button class="iconbtn" title="Umbenennen / Symbol" onclick="editCat(${i})">✏️</button>
+        <button class="iconbtn" title="Löschen" onclick="delCat(${i})">🗑</button>
+      </div>`).join('')}
+    <div class="actions"><button class="btn secondary" onclick="addCat()">＋ Kategorie hinzufügen</button></div>
+  </div>
+  <div class="card">
+    <h2>📋 ${COURSES[course]}e (${list.length})</h2>
+    ${list.length===0?'<div class="empty">Noch keine '+COURSES[course]+'e.</div>':list.map(d=>`
+      <div class="dish">
+        <div style="flex:1">
+          <div class="name">${esc(d.name)}</div>
+          <div class="tags">
+            ${d.cats.map(catChip).join('')}
+            ${d.monthly?'<span class="tag" style="background:#fff8e1;color:#b58900">⭐ monatlich</span>':''}
+            ${d.fresh?'<span class="tag" style="background:#e3f2fd;color:#1565c0">🐟 frisch</span>':''}
+            ${d.effort===3?'<span class="tag" style="background:#fbe9e7;color:#bf360c">aufwendig</span>':''}
+          </div>
+        </div>
+        <button class="iconbtn" title="Bearbeiten" onclick="editDish(${d.id})">✏️</button>
+        <button class="iconbtn" title="Auf die Liste „Nicht mehr"" onclick="archiveDish(${d.id})">📦</button>
+        <button class="iconbtn" title="Löschen" onclick="delDish(${d.id})">🗑</button>
+      </div>`).join('')}
+  </div>`;
+}
+function toggleCat(id){ syncName(); const i=form.cats.indexOf(id); if(i>=0) form.cats.splice(i,1); else form.cats.push(id); renderDishes(currentDishCourse()); }
+function currentDishCourse(){ return ['suppe','vorspeise','haupt'].includes(tab)?tab:'haupt'; }
+function saveDish(course){
+  form.name = document.getElementById('dishName').value.trim();
+  if(!form.name){ alert('Bitte einen Namen eingeben oder ansagen.'); return; }
+  if(editId!==null){ const d = dishes.find(x=>x.id===editId); Object.assign(d, { name:form.name, nameLb:form.nameLb||'', cats:[...form.cats], monthly:form.monthly, fresh:form.fresh, effort:form.effort }); }
+  else dishes.push({ id:Date.now(), course, name:form.name, nameLb:form.nameLb||'', cats:[...form.cats], monthly:form.monthly, fresh:form.fresh, effort:form.effort });
+  resetForm(); saveAll(); renderDishes(course);
+}
+function editDish(id){ const d = dishes.find(x=>x.id===id); editId=id; form={ name:d.name, nameLb:d.nameLb||'', cats:[...d.cats], monthly:d.monthly, fresh:d.fresh, effort:d.effort }; renderDishes(d.course); window.scrollTo({top:0,behavior:'smooth'}); }
+function delDish(id){ const d=dishes.find(x=>x.id===id); if(confirm('„'+d.name+'" wirklich endgültig löschen?')){ dishes=dishes.filter(x=>x.id!==id); saveAll(); renderDishes(currentDishCourse()); } }
+// ---------- Tab: Kombis (Protein + Feculon + Gemüse) ----------
+const PART_KINDS = { protein:'🥩 Proteine', feculon:'🍚 Beilagen (Feculon)', gemuese:'🥦 Gemüse' };
+function renderKombis(){
+  const row = (k)=> (parts[k]||[]).map(p=>`
+    <div class="dish">
+      <div style="flex:1">
+        <div class="name">${esc(p.name)}</div>
+        <div class="chiprow" style="flex-wrap:wrap;gap:6px">${cats.map(c=>`<span class="chip ${p.cats.includes(c.id)?'on':''}" style="${p.cats.includes(c.id)?'background:'+c.color+';border-color:'+c.color:''}" onclick="togglePartCat('${k}',${p.id},'${c.id}')">${c.icon} ${esc(c.label)}</span>`).join('')}</div>
+      </div>
+      <button class="iconbtn" title="Umbenennen" onclick="editPart('${k}',${p.id})">✏️</button>
+      <button class="iconbtn" title="Löschen" onclick="delPart('${k}',${p.id})">🗑</button>
+    </div>`).join('');
+  app.innerHTML = `
+  <div class="card"><h2>🧩 Kombi-Gerichte</h2>
+  <div class="hint">Aus diesen Listen würfelt der Planer freie Hauptgerichte zusammen: <b>Protein + Beilage + Gemüse</b> (z. B. „Hühnergeschnetzeltes mit Reis & Brokkoli"). Das passiert nur für Tage, die durch Komplettgerichte nicht besetzt sind – und nur, wenn es hier Einträge gibt. Regeln werden beachtet: Kategorien zählen gemeinsam (Huhn mit Reis verbraucht Huhn UND Reis), kein Element kommt zweimal in derselben Woche vor. Komplettgerichte (Pizza, Lasagne, Spaghetti …) bleiben im Tab „Hauptgericht".</div></div>
+  ${Object.entries(PART_KINDS).map(([k,label])=>`
+  <div class="card"><h2>${label} (${(parts[k]||[]).length})</h2>
+    <div class="actions"><button class="btn secondary" onclick="addPart('${k}')">＋ Hinzufügen</button></div>
+    ${(parts[k]||[]).length ? row(k) : '<div class="empty">Noch keine Einträge.</div>'}
+  </div>`).join('')}`;
+}
+function addPart(k){ const name = prompt('Name:'); if(!name) return; const lb = prompt('Name op Lëtzebuergesch (facultativ):','')||''; (parts[k]=parts[k]||[]).push({ id:Date.now(), name:name.trim(), nameLb:lb.trim(), cats:[] }); saveAll(); renderKombis(); }
+function editPart(k,id){ const p=(parts[k]||[]).find(x=>x.id===id); const name=prompt('Neuer Name:', p.name); if(name===null) return; const lb=prompt('Name op Lëtzebuergesch (facultativ):', p.nameLb||''); if(lb===null) return; p.name=name.trim(); p.nameLb=lb.trim(); saveAll(); renderKombis(); }
+function togglePartCat(k,id,cid){ const p=(parts[k]||[]).find(x=>x.id===id); p.cats = p.cats.includes(cid) ? p.cats.filter(x=>x!==cid) : [...p.cats,cid]; saveAll(); renderKombis(); }
+function delPart(k,id){ const p=(parts[k]||[]).find(x=>x.id===id); if(confirm('„'+p.name+'" wirklich löschen?')){ parts[k]=parts[k].filter(x=>x.id!==id); saveAll(); renderKombis(); } }
+// ---------- Tab: Nicht mehr (Archiv) ----------
+function archiveDish(id){
+  const d = dishes.find(x=>x.id===id);
+  const note = prompt('Warum soll „'+d.name+'" auf die Liste „Nicht mehr"?\n(z. B. Kinder mögen es nicht / zu aufwendig / andere Bemerkung – kann auch leer bleiben)', d.note||'');
+  if(note===null) return;
+  d.archived = true; d.note = note.trim(); saveAll(); renderDishes(currentDishCourse());
+}
+function restoreDish(id){ const d=dishes.find(x=>x.id===id); d.archived=false; saveAll(); renderArchiv(); }
+function editNote(id){ const d=dishes.find(x=>x.id===id); const note=prompt('Bemerkung für „'+d.name+'":', d.note||''); if(note===null) return; d.note=note.trim(); saveAll(); renderArchiv(); }
+function renderArchiv(){
+  const arch = dishes.filter(d=>d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));
+  const section = (course)=>arch.filter(d=>d.course===course).map(d=>`
+      <div class="dish">
+        <div style="flex:1">
+          <div class="name" style="color:#607d8b">${esc(d.name)}</div>
+          <div class="tags">${d.cats.map(catChip).join('')}
+            ${d.note?`<span class="tag" style="background:#fff3e0;color:#e65100">💬 ${esc(d.note)}</span>`:'<span class="tag" style="background:#eceff1;color:#90a4ae">💬 keine Bemerkung</span>'}
+          </div>
+        </div>
+        <button class="iconbtn" title="Bemerkung ändern" onclick="editNote(${d.id})">💬</button>
+        <button class="iconbtn" title="Zurück in die Menüplanung" onclick="restoreDish(${d.id})">↩️</button>
+        <button class="iconbtn" title="Endgültig löschen" onclick="delArch(${d.id})">🗑</button>
+      </div>`).join('');
+  app.innerHTML = `
+  <div class="card">
+    <h2>📦 Nicht mehr – Archiv (${arch.length})</h2>
+    <div class="hint">Hier stehen alle Suppen, Vorspeisen und Hauptgerichte, die du nicht mehr machen möchtest. Sie werden bei der Menüplanung ignoriert. Mit der Bemerkung 💬 hältst du fest, warum (z. B. Kinder mögen es nicht, zu aufwendig …). Mit ↩️ holst du sie jederzeit zurück.</div>
+  </div>
+  ${(['suppe','vorspeise','haupt']).map(c=>arch.some(d=>d.course===c)?`
+  <div class="card"><h2>${COURSES[c]}e (${arch.filter(d=>d.course===c).length})</h2>${section(c)}</div>`:'').join('')}
+  ${arch.length===0?'<div class="empty">Noch nichts archiviert. In den Listen Suppe / Vorspeise / Hauptgericht auf 📦 tippen, um ein Gericht hierher zu verschieben.</div>':''}`;
+}
+function delArch(id){ const d=dishes.find(x=>x.id===id); if(confirm('„'+d.name+'" endgültig aus dem Archiv löschen?')){ dishes=dishes.filter(x=>x.id!==id); saveAll(); renderArchiv(); } }
+// ---------- Tab: Monatlich (⭐) ----------
+function renderMonthly(){
+  const mon = dishes.filter(d=>d.monthly && !d.archived).sort((a,b)=>a.name.localeCompare(b.name,'de'));
+  const row = (d)=>`
+      <div class="dish">
+        <div style="flex:1">
+          <div class="name">${esc(d.name)}</div>
+          <div class="tags">
+            <span class="tag" style="background:#e8eaf6;color:#3949ab">${COURSES[d.course]}</span>
+            ${d.cats.map(catChip).join('')}
+            ${d.fresh?'<span class="tag" style="background:#e3f2fd;color:#1565c0">🐟 frisch</span>':''}
+            ${d.effort===3?'<span class="tag" style="background:#fbe9e7;color:#bf360c">aufwendig</span>':''}
+          </div>
+        </div>
+        <button class="iconbtn" title="Bearbeiten" onclick="editDish(${d.id})">✏️</button>
+        <button class="iconbtn" title="Auf die Liste „Nicht mehr"" onclick="archiveDish(${d.id})">📦</button>
+        <button class="iconbtn" title="Löschen" onclick="delDish(${d.id})">🗑</button>
+      </div>`;
+  const byCourse = (c)=>mon.filter(d=>d.course===c);
+  // Max. mögliche ⭐-Gerichte pro Monat: ~21 Werktage minus fest verplante Wochentage (z. B. Freitags-Gemüsesuppe)
+  const monthMax = (c)=>{
+    const forced = new Set();
+    for(const r of rules) if(r.course===c && r.type==='dishDay' && Array.isArray(r.params.days)) r.params.days.forEach(x=>forced.add(x));
+    return Math.max(0, 21 - Math.round(forced.size*4.34));
+  };
+  const counterRow = ['suppe','vorspeise','haupt'].map(c=>{
+    const n = byCourse(c).length, max = monthMax(c);
+    const col = n>max ? '#c62828' : (n>=max-2 ? '#e65100' : '#2e7d32');
+    const ic = n>max ? '🚫' : (n>=max-2 ? '⚠️' : '✅');
+    return `<span class="tag" style="background:${col}1a;color:${col};font-size:.95rem;padding:6px 12px">${ic} ${COURSES[c]}e: ${n} / ${max}</span>`;
+  }).join(' ');
+  app.innerHTML = `
+  <div class="card">
+    <h2>⭐ Einmal pro Monat (${mon.length})</h2>
+    <div class="hint">Alle Suppen, Vorspeisen und Hauptgerichte mit dem ⭐-Kennzeichen auf einen Blick. Der Planer setzt sie automatisch ungefähr einmal pro Monat ein (Regel „Monatsgericht" im Regeln-Tab anpassbar). Verwaltet (⭐ setzen/entfernen) werden sie in ihren eigenen Listen.</div>
+  </div>
+  <div class="card">
+    <h3>📊 ⭐-Zähler (vorhanden / maximal möglich)</h3>
+    <div class="chiprow" style="flex-wrap:wrap;gap:6px">${counterRow}</div>
+    <div class="hint">Ein Monat hat rund 21 Werktage pro Ebene. Fest verplante Tage (z. B. Freitags-Gemüsesuppe) werden abgezogen. Bei ✅ ist entspannt, bei ⚠️ wird's eng, bei 🚫 passt nicht mehr jedes ⭐-Gericht in jeden Monat.</div>
+  </div>
+  ${['suppe','vorspeise','haupt'].map(c=>byCourse(c).length?`
+  <div class="card"><h2>${COURSES[c]}e (${byCourse(c).length})</h2>${byCourse(c).map(row).join('')}</div>`:'').join('')}
+  ${mon.length===0?'<div class="empty">Noch keine Monatsgerichte markiert. In den Listen Suppe / Vorspeise / Hauptgericht beim Gericht ✏️ wählen und dort „⭐ 1× pro Monat" einschalten.</div>':''}`;
+}
+function addCat(){ const label = prompt('Name der neuen Kategorie:'); if(!label) return;
+  const icon = prompt('Symbol (Emoji) für die Kategorie:', '🍽️')||'🍽️';
+  cats.push({ id:'c'+Date.now(), label:label.trim(), icon, color:PALETTE[cats.length%PALETTE.length] }); saveAll(); renderDishes(currentDishCourse()); }
+function editCat(i){ const c=cats[i]; const label=prompt('Neuer Name:', c.label); if(label===null) return; const icon=prompt('Symbol (Emoji):', c.icon); if(icon===null) return; c.label=label.trim(); c.icon=icon; saveAll(); renderDishes(currentDishCourse()); }
+function cycleColor(i){ cats[i].color = PALETTE[(PALETTE.indexOf(cats[i].color)+1)%PALETTE.length]; saveAll(); renderDishes(currentDishCourse()); }
+function delCat(i){ const c=cats[i]; const used=dishes.filter(d=>d.cats.includes(c.id));
+  if(!confirm('Kategorie „'+c.label+'" löschen? Sie wird von '+used.length+' Gericht(en) entfernt.')) return;
+  cats.splice(i,1); dishes.forEach(d=>d.cats=d.cats.filter(x=>x!==c.id)); saveAll(); renderDishes(currentDishCourse()); }
+
+// ---------- Tab: Plan ----------
+function getDish(course, w, day){ const pc = plan && plan.find(p=>p.course===course); return pc ? pc.days[w*5+day] : null; }
+function dishName(d){
+  if(planLang==='lb' && d){ const lb = d.nameLb || LB_NAMES[d.name]; if(lb) return lb; }
+  return d ? d.name : '—';
+}
+function renderPlan(){
+  const dn = planLang==='lb'?DAYNAMES_LB:DAYNAMES;
+  const dnShort = (i)=> dn[i].slice(0, planLang==='lb'?3:2);
+  const ICONS = { suppe:'🍲', vorspeise:'🥗', haupt:'🍽️' };
+  app.innerHTML = `
+  <div class="card noprint">
+    <h2>🗓️ Wochenplan – 3 Monate (13 Wochen)</h2>
+    <div class="hint">Der Plan wählt ausschließlich aus deinen eigenen Gerichten. Regeln siehe Tab „Regeln".</div>
+    <div class="actions">
+      <button class="btn" onclick="generatePlan()">Plan neu erstellen</button>
+      <button class="btn secondary" onclick="clearPlan()">Leeren</button>
+    </div>
+    <div class="actions">
+      <button class="btn secondary" onclick="setLang('de')">Deutsch 🇩🇪</button>
+      <button class="btn secondary" onclick="setLang('lb')">Lëtzebuergesch 🇱🇺</button>
+      <button class="btn secondary" onclick="window.print()">🖨️ Ausdrucken</button>
+    </div>
+  </div>
+  ${!plan ? '<div class="empty">Noch kein Plan erstellt.</div>' : Array.from({length:13},(_,w)=>`
+    <div class="card">
+      <h2 style="color:#2e7d32">${planLang==='lb'?'Woch':'Woche'} ${w+1}</h2>
+      ${DAYNAMES.map((_,day)=>{
+        const s = getDish('suppe',w,day), v = getDish('vorspeise',w,day), h = getDish('haupt',w,day);
+        return `<div class="daycard">
+          <div class="dname">${dnShort(day)}</div>
+          <div style="flex:1">
+            <div class="dline"><span class="dic">${ICONS.suppe}</span><span>${s?esc(dishName(s)): '—'}${s&&s.monthly?' ⭐':''}</span></div>
+            <div class="dline"><span class="dic">${ICONS.vorspeise}</span><span>${v?esc(dishName(v)): '—'}${v&&v.monthly?' ⭐':''}</span></div>
+            <div class="dline"><span class="dic">${ICONS.haupt}</span><span>${h?esc(dishName(h)): '—'}${h&&h.monthly?' ⭐':''}</span></div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`).join('')}
+  ${plan?'<div class="legend noprint">Tipp: Leere Stellen bedeuten, dass die Regeln kein passendes Gericht zulassen – Gerichte ergänzen oder Regeln anpassen. Mit ✏️ kannst du einzelne Wochen nicht ändern – der Plan wird immer komplett neu erstellt.</div>':''}`;
+}
+function setLang(l){ planLang=l; saveAll(); renderPlan(); }
+function clearPlan(){ plan=null; saveAll(); renderPlan(); }
+
+// ---------- Tab: Regeln ----------
+let addType = 'catWeek';
+function renderRules(){
+  const section = (course)=>`
+    <div class="card">
+      <h2>📏 Regeln – ${COURSES[course]}</h2>
+      ${rules.filter(r=>r.course===course).map(r=>ruleRow(r)).join('') || '<div class="empty">Keine Regeln.</div>'}
+      <div class="actions">
+        <select id="addtype-${course}" style="margin:0" onchange="addType=this.value">
+          ${Object.entries(RULE_LABELS).map(([k,v])=>`<option value="${k}" ${addType===k?'selected':''}>${v}</option>`).join('')}
+        </select>
+        <button class="btn secondary" style="flex:none" onclick="addRule('${course}')">＋ Regel</button>
+      </div>
+    </div>`;
+  app.innerHTML = `<div class="card"><h2>📏 Regeln verwalten</h2><div class="hint">Regeln gelten pro Ebene (Suppe / Vorspeise / Hauptgericht). Änderungen werden sofort übernommen; beim Löschen wird nochmal nachgefragt.</div></div>`
+    + section('suppe') + section('vorspeise') + section('haupt');
+}
+function weekdaysPicker(id, sel){ return `<span class="weekday" id="${id}">${DAYNAMES.map((d,i)=>`<span class="chip ${sel.includes(i)?'on':''}" onclick="this.classList.toggle('on')">${d.slice(0,2)}</span>`).join('')}</span>`; }
+function ruleRow(r){
+  const p = r.params; let params = '';
+  if(r.type==='catWeek') params = `<label>Kategorie</label><select onchange="updRule('${r.id}','cat',this.value)">${cats.map(c=>`<option value="${c.id}" ${p.cat===c.id?'selected':''}>${c.icon} ${esc(c.label)}</option>`).join('')}</select>
+    <label>min/ Woche</label><input type="number" value="${p.min}" onchange="updRuleNum('${r.id}','min',this.value)">
+    <label>max/ Woche</label><input type="number" value="${p.max}" onchange="updRuleNum('${r.id}','max',this.value)">`;
+  else if(r.type==='monthly') params = `<label>max. pro Monat</label><input type="number" value="${p.max}" onchange="updRuleNum('${r.id}','max',this.value)">`;
+  else if(r.type==='minGap') params = `<label>Wochen Abstand</label><input type="number" value="${p.weeks}" onchange="updRuleNum('${r.id}','weeks',this.value)">`;
+  else if(r.type==='freshDays') params = `<label>Tage (Mo–Fr):</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class="btn secondary small" onclick="readDays('${r.id}','freshDays')">OK</button>`;
+  else if(r.type==='effortDays') params = `<label>Aufwand</label><select onchange="updRuleNum('${r.id}','effort',this.value)"><option value="1" ${p.effort==1?'selected':''}>wenig</option><option value="2" ${p.effort==2?'selected':''}>mittel</option><option value="3" ${p.effort==3?'selected':''}>viel</option></select>
+    <label>Tage:</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class="btn secondary small" onclick="readDays('${r.id}','effortDays')">OK</button>`;
+  else if(r.type==='perWeek') params = `<label>max. pro Woche</label><input type="number" value="${p.max}" onchange="updRuleNum('${r.id}','max',this.value)">`;
+  else if(r.type==='monthlyMust') params = `<label>max. ⭐ pro Woche</label><input type="number" value="${p.perWeek||1}" onchange="updRuleNum('${r.id}','perWeek',this.value)">`;
+  else if(r.type==='sameVegWeek') params = `<label>max. pro Woche</label><input type="number" value="${p.max}" onchange="updRuleNum('${r.id}','max',this.value)">`;
+  else if(r.type==='courseDepEffort') params = `<label>Nur wenn</label><select onchange="updRule('${r.id}','course',this.value)">${Object.keys(COURSES).map(k=>`<option value="${k}" ${p.course===k?'selected':''}>${COURSES[k]}</option>`).join('')}</select>
+    <label>Aufwand max.</label><select onchange="updRuleNum('${r.id}','effortMax',this.value)"><option value="1" ${p.effortMax==1?'selected':''}>wenig</option><option value="2" ${p.effortMax==2?'selected':''}>mittel</option></select>`;
+  else if(r.type==='dishDay') params = `<label>Gericht</label><select onchange="updRule('${r.id}','name',this.value)">${dishes.filter(x=>x.course===r.course && !x.archived).map(x=>`<option value="${esc(x.name)}" ${p.name===x.name?'selected':''}>${esc(x.name)}</option>`).join('')}</select>
+    <label>Tage (Mo–Fr):</label>${weekdaysPicker('wd-'+r.id, p.days)} <button class="btn secondary small" onclick="readDays('${r.id}','dishDay')">OK</button>`;
+  return `<div class="rule"><div class="rtop"><span class="rlabel">${RULE_LABELS[r.type]}</span>
+    <button class="iconbtn" title="Löschen" onclick="delRule('${r.id}')">🗑</button></div><div class="params">${params}</div></div>`;
+}
+function updRule(id,k,v){ rules.find(r=>r.id===id).params[k]=v; saveAll(); }
+function updRuleNum(id,k,v){ updRule(id,k, parseInt(v)||0); }
+function readDays(id){ const chips=[...document.getElementById('wd-'+id).querySelectorAll('.chip')]; rules.find(r=>r.id===id).params.days = chips.map((c,i)=>c.classList.contains('on')?i:-1).filter(i=>i>=0); saveAll(); }
+function addRule(course){
+  const type = document.getElementById('addtype-'+course).value;
+  const base = { id:'r'+Date.now(), course, type };
+  if(type==='catWeek') base.params={ cat:(cats[0]||{}).id||'', min:1, max:1 };
+  else if(type==='monthly') base.params={ max:1 };
+  else if(type==='minGap') base.params={ weeks:4 };
+  else if(type==='freshDays') base.params={ days:[2,3,4] };
+  else if(type==='effortDays') base.params={ effort:3, days:[3,4] };
+  else if(type==='perWeek') base.params={ max:2 };
+  else if(type==='courseDepEffort') base.params={ course:'haupt', effortMax:2 };
+  else if(type==='dishDay') base.params={ name:(dishes.filter(x=>x.course===course && !x.archived)[0]||{}).name||'', days:[4] };
+  else if(type==='monthlyMust') base.params={ perWeek:1 };
+  else if(type==='sameVegWeek') base.params={ max:1 };
+  rules.push(base); saveAll(); renderRules();
+}
+function delRule(id){ const r=rules.find(x=>x.id===id); if(!confirm('Regel „'+RULE_LABELS[r.type]+'" wirklich löschen?')) return; rules=rules.filter(x=>x.id!==id); saveAll(); renderRules(); }
+
+// ---------- Tab: Sicherung ----------
+function renderBackup(){
+  app.innerHTML = `
+  <div class="card">
+    <h2>💾 Sicherheitskopie</h2>
+    <div class="hint">Wie bei der Crèche-Küchenhelfer-App: Alle Daten (Kategorien, ${['suppe','vorspeise','haupt'].map(c=>COURSES[c]+'e').join(', ')}, Regeln) als Datei sichern und wiederherstellen. Der erstellte Plan wird mitgesichert.</div>
+    <div class="actions"><button class="btn" onclick="exportBackup()">⬇️ Sicherung exportieren</button></div>
+    <div class="actions"><button class="btn secondary" onclick="document.getElementById('impfile').click()">⬆️ Sicherung importieren</button></div>
+    <input type="file" id="impfile" accept=".json" style="display:none" onchange="importBackup(this)">
+    <h3>📋 Datenbestand</h3>
+    <div class="hint">Kategorien: ${cats.length} · Suppen: ${dishes.filter(d=>d.course==='suppe'&&!d.archived).length} · Vorspeisen: ${dishes.filter(d=>d.course==='vorspeise'&&!d.archived).length} · Hauptgerichte: ${dishes.filter(d=>d.course==='haupt'&&!d.archived).length} · Archiv „Nicht mehr": ${dishes.filter(d=>d.archived).length} · Regeln: ${rules.length}</div>
+    <h3>⚠️ Zurücksetzen</h3>
+    <div class="actions"><button class="btn secondary" onclick="resetAll()">Alles löschen & zurücksetzen</button></div>
+  </div>`;
+}
+function exportBackup(){
+  const data = JSON.stringify({ version:VERSION, exported:new Date().toISOString(), cats, dishes, rules, parts, plan }, null, 2);
+  try {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([data], {type:'application/json'}));
+    a.download = 'menue-planer-sicherung-v'+VERSION+'.json'; a.click();
+  } catch(e){ alert('Download in dieser Vorschau blockiert – in der App/PWA funktioniert er. Alternativ:\n\n'+data.slice(0,2000)); }
+}
+function importBackup(input){
+  const f = input.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = ()=>{ try {
+    const d = JSON.parse(rd.result);
+    if(!confirm('Sicherung importieren? Aktuelle Daten werden ersetzt.')) return;
+    if(d.cats) cats=d.cats; if(d.dishes) dishes=d.dishes; if(d.rules) rules=d.rules; if(d.parts) parts=d.parts; plan=d.plan||null;
+    saveAll(); alert('Import erfolgreich ✓'); render();
+  } catch(e){ alert('Datei konnte nicht gelesen werden.'); } };
+  rd.readAsText(f);
+}
+function resetAll(){ if(confirm('Wirklich ALLE Daten löschen und auf Standard zurücksetzen?')){ localStorage.removeItem('mp_cats'); localStorage.removeItem('mp_dishes'); localStorage.removeItem('mp_rules'); localStorage.removeItem('mp_parts'); localStorage.removeItem('mp_plan'); loadAll(); render(); } }
+
+loadAll();
+render();
+</script>
+<script>
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').then(reg=>{
+      reg.addEventListener('updatefound', ()=>{ const nw = reg.installing; if(nw) nw.addEventListener('statechange', ()=>{ if(nw.state==='installed' && navigator.serviceWorker.controller){ nw.postMessage({type:'SKIP_WAITING'}); } }); });
+    });
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', ()=>{ if(!refreshing){ refreshing = true; location.reload(); } });
+  }
+</script>
+</body>
+</html>
